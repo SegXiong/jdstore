@@ -13,13 +13,15 @@
         <%= @product.description %>
       </p>
     </div>
-    <div>数量 : <%= @product.quantity %></div>
+    <div><%= t("quantity") %> : <%= @product.quantity %></div>
     <div class="product-price">￥ <%= @product.price %></div>
     <div class="pull-right">
       <% if @product.quantity.present? && @product.quantity > 0 %>
-        <%= link_to("加入购物车", add_to_cart_product_path(@product), :method => :post, :class => "btn btn-lg btn-danger") %>
+        <%= link_to add_to_cart_product_path(@product), :method => :post, :class => "btn btn-lg btn-danger" do %>
+          <%= t("add_to_cart") %>
+        <% end %>
       <% else %>
-        已销售一空，无法购买
+        <%= t("empty") %>
       <% end %>
     </div>
   </div>

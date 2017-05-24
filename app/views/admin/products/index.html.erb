@@ -1,15 +1,17 @@
-<h2>Product List</h2>
+<h2><%= t("admin.product_list") %></h2>
 <div class="pull-right" style="padding-bottom: 20px;">
-  <%= link_to("新增产品", new_admin_product_path, class: "btn btn-primary btn-sm") %>
+  <%= link_to new_admin_product_path, class: "btn btn-primary btn-sm" do %>
+    <%= t("admin.add") %>
+  <% end %>
 </div>
 <table class="table table-bordered">
   <thead>
     <tr>
       <th>#</th>
-      <th width="220">Product Pic</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th width="100">Options</th>
+      <th width="220"><%= t("admin.product_pic") %></th>
+      <th><%= t("admin.name") %></th>
+      <th><%= t("admin.price") %></th>
+      <th width="100"><%= t("admin.option") %></th>
     </tr>
   </thead>
   <tbody>
@@ -34,7 +36,9 @@
           <%= product.price %>
         </td>
         <td>
-          <%= link_to("Edit", edit_admin_product_path(product)) %>
+          <%= link_to edit_admin_product_path(product) do %>
+            <%= t("admin.edit") %>
+          <% end %>
         </td>
       </tr>
     <% end %>

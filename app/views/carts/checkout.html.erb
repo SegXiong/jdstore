@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-md-12">
-    <h2>购物明细</h2>
+    <h2><%= t("shopping_list") %></h2>
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th width="80%">商品明细</th>
-          <th>单价</th>
-          <th>数量</th>
+          <th width="80%"><%= t("product") %></th>
+          <th><%= t("price") %></th>
+          <th><%= t("quantity") %></th>
         </tr>
       </thead>
       <tbody>
@@ -28,23 +28,23 @@
 
     <div class="total clearfix">
       <span class="pull-right">
-        总计 <%= render_cart_total_price(current_cart) %> CNY
+        <%= t("total") %> <%= render_cart_total_price(current_cart) %> CNY
       </span>
     </div>
 
     <hr />
 
-    <h2>订单资讯</h2>
+    <h2><%= t("order_detail") %></h2>
     <div class="order-form">
       <%= simple_form_for @order do |f| %>
-      <legend>订购人</legend>
+      <legend><%= t("billing") %></legend>
       <div class="form-group col-lg-6">
         <%= f.input :billing_name %>
       </div>
       <div class="form-group col-lg-6">
         <%= f.input :billing_address %>
       </div>
-      <legend>收货人</legend>
+      <legend><%= t("shipping") %></legend>
       <div class="form-group col-lg-6">
         <%= f.input :shipping_name %>
       </div>
@@ -52,7 +52,7 @@
         <%= f.input :shipping_address %>
       </div>
       <div class="checkout">
-        <%= f.submit "生成订单", class: "btn btn-lg btn-danger pull-right", data: {disable_with:"Submitting..."} %>
+        <%= f.submit t("confirm_order"), class: "btn btn-lg btn-danger pull-right", data: {disable_with:"Submitting..."} %>
       </div>
       <% end %>
     </div>
