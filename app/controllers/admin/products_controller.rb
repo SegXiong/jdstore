@@ -40,6 +40,13 @@ class Admin::ProductsController < ApplicationController
 
   end
 
+  def destroy
+    @product = Product.find_by_friendly_id!(params[:id])
+    @product.destroy
+    redirect_to admin_products_path, notice: 'Deleted'
+
+  end
+
   private
 
   def product_params

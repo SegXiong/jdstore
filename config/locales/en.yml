@@ -66,6 +66,7 @@ en:
     products: "Products"
     orders: "Orders"
     edit: "Edit"
+    destroy: "Delete"
     add: "Add a Product"
     created_at: "Created_at"
     buyer: "Buyer"

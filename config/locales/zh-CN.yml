@@ -45,6 +45,7 @@ zh-CN:
     products: "全部商品"
     orders: "全部订单"
     edit: "编辑"
+    destroy: "删除"
     add: "新增商品"
     created_at: "生成时间"
     buyer: "订购者"
