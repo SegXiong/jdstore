@@ -67,6 +67,7 @@
                 <%= t("orders") %>
                 <% end %>
               </li>
+              <li><%= link_to(t("account.favorites"), account_favorites_path) %></li>
               <li><%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i><%= t("log_out") %>
                 <% end %>

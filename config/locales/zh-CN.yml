@@ -32,10 +32,15 @@ zh-CN:
   link: "订单连结"
   language: "切换语系"
   category: "分类"
+  collect: "加入收藏"
+  discollect: "取消收藏"
 
   account:
     order_list: "订单列表"
     created_at: "生成时间"
+    favorites: "我的收藏"
+    options: "操作选项"
+    remove: "移出"
 
   admin:
     product_list: "商品列表管理"

@@ -53,10 +53,15 @@ en:
   link: "Link to Order"
   language: "Swith Language"
   category: "Category"
+  collect: "Collect"
+  discollect: "Discollect"
 
   account:
     order_list: "Order List"
     created_at: "Created_at"
+    favorites: "My Favorites"
+    options: "Options"
+    remove: "Remove"
 
   admin:
     product_list: "Product List"

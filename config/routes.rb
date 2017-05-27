@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :products do
     member do
       post :add_to_cart
+      post :collect
+      post :discollect
     end
   end
 
@@ -38,6 +40,11 @@ Rails.application.routes.draw do
 
   namespace :account do
     resources :orders
+    resources :favorites do
+      member do
+        post :remove
+      end
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "products#index"
