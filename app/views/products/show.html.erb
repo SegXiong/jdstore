@@ -1,7 +1,15 @@
 <div class="row">
   <div class="col-md-6">
-    <% if @product.image.present? %>
-      <%= image_tag(@product.image.medium.url, class: "thumbnail") %>
+    <% if @photos.present? %>
+      <% @photos.each_with_index do |photo, index| %>
+        <% if index == 0 %>
+          <%= image_tag(photo.avatar.medium.url, class: "thumbnail") %>
+            <div style="letter-spacing: -8px;">
+        <% else %>
+          <%= image_tag(photo.avatar.thumb.url, class: "thumbnail") %>
+        <% end %>
+      <% end %>
+            </div>
     <% else %>
       <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
     <% end %>
@@ -26,3 +34,52 @@
     </div>
   </div>
 </div>
+
+<div class="product-container">
+	<div class="col-md-6 product-images">
+		<div id='carousel-custom' class='carousel slide' data-ride='carousel'>
+	        <div class='carousel-inner'>
+				<% if @photos.present? %>
+					<% @photos.each_with_index do |photo, index| %>
+						<% if index == 0 %>
+							<%= image_tag(photo.avatar.medium.url, class: "item active") %>
+						<% else %>
+							<%= image_tag(photo.avatar.medium.url, class: "item") %>
+						<% end %>
+					<% end %>
+				<% else %>
+					<%= image_tag("http://placehold.it/400x510&text=No Pic", class: "item") %>
+				<% end %>
+	        </div>
+
+        <!-- <a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
+	            <span class='glyphicon glyphicon-chevron-left'></span>
+	        </a>
+	        <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
+	            <span class='glyphicon glyphicon-chevron-right'></span>
+	        </a> -->
+
+	        <ol class='carousel-indicators mCustomScrollbar meartlab'>
+	        	<% if @photos.present? %>
+	        		<% @photos.each_with_index do |photo, index| %>
+	        			<% if photo.avatar.present? %>
+	        				<% if index == 0 %>
+								<li data-target="#carousel-custom" data-slide-to="<%= index %>" class="active">
+		        					<%= image_tag(photo.avatar.small.url) %>
+		        				</li>
+	        				<% else %>
+	        					<li data-target="#carousel-custom" data-slide-to="<%= index %>">
+		        					<%= image_tag(photo.avatar.small.url) %>
+		        				</li>
+	        				<% end %>
+
+	        			<% else %>
+	        				<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
+	        			<% end %>
+	        		<% end %>
+
+				<% else %>
+					<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
+				<% end %>
+	    	</ol>
+		</div>

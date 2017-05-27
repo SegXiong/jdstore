@@ -4,7 +4,7 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th width="80%"><%= t("product") %></th>
+          <th colspan="2"><%= t("product") %></th>
           <th><%= t("price") %></th>
           <th><%= t("quantity") %></th>
         </tr>
@@ -12,6 +12,15 @@
       <tbody>
         <% current_cart.cart_items.each do |cart_item| %>
         <tr>
+          <td>
+            <%= link_to product_path(cart_item.product) do %>
+              <% if cart_item.product.photos[0].present? %>
+                <%= image_tag(cart_item.product.photos[0].avatar.small.url, class: "thumbnail") %>
+              <% else %>
+                <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+              <% end %>
+            <% end %>
+          </td>
           <td>
             <%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
           </td>

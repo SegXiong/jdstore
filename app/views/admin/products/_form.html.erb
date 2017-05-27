@@ -14,12 +14,16 @@
   <div class="group">
     <%= f.input :price %>
   </div>
-  <% if @product.image.present? %>
+  <% if @product.photos.present? %>
     <span>目前商品图</span> <br />
-    <%= image_tag(@product.image.thumb.url) %>
+    <% @product.photos.each do |photo| %>
+      <%= image_tag(photo.avatar.thumb.url) %>
+    <% end %>
   <% end %>
   <div class="group">
-    <%= f.input :image, as: :file %>
+    <#%= f.input :image, as: :file %>
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar, :miltiple => true, name: "photos[avatar][]" %>
   </div>
   <%= f.submit "Submit", data: {disable_with: "Submitting..."} %>
 <% end %>

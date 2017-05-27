@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  has_many :photos, :dependent => :destroy
+  accepts_nested_attributes_for :photos
+
   mount_uploader :image, ImageUploader
 
   validates_presence_of :friendly_id, :title

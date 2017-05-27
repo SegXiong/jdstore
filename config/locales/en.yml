@@ -86,6 +86,7 @@ en:
     return: "Ruturn"
     cancelled: "Cancelled"
     returned: "Returned"
+    avatar: "Images"
 
   hello: "Hi %{name},"
 

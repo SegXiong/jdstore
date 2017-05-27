@@ -65,6 +65,7 @@ zh-CN:
     return: "退货"
     cancelled: "订单已取消"
     returned: "已退货"
+    avatar: "图片"
 
   hello: "亲～ %{name} 你好："
 
