@@ -40,6 +40,7 @@ gem 'qiniu-rs'
 gem 'figaro'
 gem 'rails-i18n'
 gem 'devise-i18n'
+gem 'select2-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

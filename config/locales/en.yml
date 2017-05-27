@@ -52,6 +52,7 @@ en:
   sum: "Sum"
   link: "Link to Order"
   language: "Swith Language"
+  category: "Category"
 
   account:
     order_list: "Order List"
@@ -100,6 +101,7 @@ en:
         price: "Price"
         image: "Image"
         created_at: "Created_at"
+        category_id: "Category"
 
       order:
         billing_name: "Billing_Name"

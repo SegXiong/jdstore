@@ -16,6 +16,10 @@
     <%= f.input :price %>
   </div>
   <div class="group">
+    <%= f.label :category_id %>
+    <%= f.select :category_id, Category.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
+  </div>
+  <div class="group">
     <%#= f.input :image, as: :file %>
     <%= f.label :avatar, t("admin.avatar") %>
     <%= f.file_field :avatar, :multiple => true, name: "photos[avatar][]" %>
@@ -25,3 +29,7 @@
     <%= f.submit "Submit", data: {disable_with: "Submitting..."} %>
   </div>
 <% end %>
+
+<script>
+  $("#product_category_id").select2( { theme: "bootstrap"} );
+</script>

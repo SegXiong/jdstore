@@ -31,6 +31,7 @@ zh-CN:
   sum: "小记"
   link: "订单连结"
   language: "切换语系"
+  category: "分类"
 
   account:
     order_list: "订单列表"
@@ -79,6 +80,7 @@ zh-CN:
         price: "价格"
         image: "图片"
         created_at: "创建时间"
+        category_id: "类别"
 
       order:
         billing_name: "姓名"
