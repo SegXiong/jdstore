@@ -37,7 +37,12 @@
         </li>
         <li>
           <%= link_to carts_path do %>
-          <%= t("cart") %> <i class="fa fa-shopping-cart"></i>（ <%= current_cart.products.count %> ）
+          <%= t("cart") %> <i class="fa fa-shopping-cart"></i>
+            <% count = 0 %>
+            <% current_cart.cart_items.each do |cart_item| %>
+            <% count += cart_item.quantity %>
+            <% end %>
+            （ <%= count %> ）
           <% end %>
         </li>
 
