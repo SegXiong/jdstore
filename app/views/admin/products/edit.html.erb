@@ -20,7 +20,7 @@
     <%= f.select :category_id, Category.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
   </div>
   <% if @product.photos.present? %>
-    <span>目前商品图</span> <br />
+    <span><%= t("admin.current_pic") %></span> <br />
     <% @product.photos.each do |photo| %>
       <%= image_tag(photo.avatar.thumb.url) %>
     <% end %>
@@ -32,7 +32,7 @@
   </div>
   <br />
   <div class="group">
-    <%= f.submit "Submit", data: {disable_with: "Submitting..."} %>
+    <%= f.button :submit, t("submit"), data: {disable_with: "Submitting..."} %>
   </div>
 <% end %>
 

@@ -68,6 +68,7 @@
                   <% end %>
                 </li>
               <% end %>
+              <li><%= link_to(t("user"), edit_account_user_path(current_user)) %></li>
               <li><%= link_to account_orders_path do %>
                 <%= t("orders") %>
                 <% end %>

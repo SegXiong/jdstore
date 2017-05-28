@@ -55,6 +55,8 @@ en:
   category: "Category"
   collect: "Collect"
   discollect: "Discollect"
+  user: "My Address"
+  submit: "Submit"
 
   account:
     order_list: "Order List"
@@ -62,6 +64,7 @@ en:
     favorites: "My Favorites"
     options: "Options"
     remove: "Remove"
+    my_info: "My Info"
 
   admin:
     product_list: "Product List"
@@ -93,6 +96,7 @@ en:
     cancelled: "Cancelled"
     returned: "Returned"
     avatar: "Images"
+    current_pic: "Current Picture"
 
   hello: "Hi %{name},"
 
@@ -113,3 +117,7 @@ en:
         billing_address: "Billing_Address"
         shipping_name: "Shipping_Name"
         shipping_address: "Shipping_Address"
+
+      user:
+        name: "Name"
+        address: "Address"

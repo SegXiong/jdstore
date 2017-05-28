@@ -15,13 +15,13 @@
     <%= f.input :price %>
   </div>
   <% if @product.photos.present? %>
-    <span>目前商品图</span> <br />
+    <span><%= t("admin.current_pic") %></span> <br />
     <% @product.photos.each do |photo| %>
       <%= image_tag(photo.avatar.thumb.url) %>
     <% end %>
   <% end %>
   <div class="group">
-    <#%= f.input :image, as: :file %>
+    <%#= f.input :image, as: :file %>
     <%= f.label :avatar %>
     <%= f.file_field :avatar, :miltiple => true, name: "photos[avatar][]" %>
   </div>

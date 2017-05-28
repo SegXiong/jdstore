@@ -34,6 +34,8 @@ zh-CN:
   category: "分类"
   collect: "加入收藏"
   discollect: "取消收藏"
+  user: "收货地址"
+  submit: "提交"
 
   account:
     order_list: "订单列表"
@@ -41,6 +43,7 @@ zh-CN:
     favorites: "我的收藏"
     options: "操作选项"
     remove: "移出"
+    my_info: "我的资料"
 
   admin:
     product_list: "商品列表管理"
@@ -72,6 +75,7 @@ zh-CN:
     cancelled: "订单已取消"
     returned: "已退货"
     avatar: "图片"
+    current_pic: "当前图片"
 
   hello: "亲～ %{name} 你好："
 
@@ -92,3 +96,7 @@ zh-CN:
         billing_address: "地址"
         shipping_name: "姓名"
         shipping_address: "地址"
+
+      user:
+        name: "姓名"
+        address: "地址"

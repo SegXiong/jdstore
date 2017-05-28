@@ -1,0 +1,13 @@
+<h2><%= t("account.my_info") %></h2>
+
+<%= simple_form_for [:account, @user] do |f| %>
+  <div class="group">
+    <%= f.input :name %>
+  </div>
+  <div class="group">
+    <%= f.input :address %>
+  </div>
+  <div class="group">
+    <%= f.button :submit, t("submit")  %>
+  </div>
+<% end %>

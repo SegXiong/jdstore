@@ -48,17 +48,17 @@
       <%= simple_form_for @order do |f| %>
       <legend><%= t("billing") %></legend>
       <div class="form-group col-lg-6">
-        <%= f.input :billing_name %>
+        <%= f.input :billing_name, input_html: {value: current_user.name} %>
       </div>
       <div class="form-group col-lg-6">
-        <%= f.input :billing_address %>
+        <%= f.input :billing_address, input_html: {value: current_user.address} %>
       </div>
       <legend><%= t("shipping") %></legend>
       <div class="form-group col-lg-6">
-        <%= f.input :shipping_name %>
+        <%= f.input :shipping_name, input_html: {value: current_user.name} %>
       </div>
       <div class="form-group col-lg-6">
-        <%= f.input :shipping_address %>
+        <%= f.input :shipping_address, input_html: {value: current_user.address} %>
       </div>
       <div class="checkout">
         <%= f.submit t("confirm_order"), class: "btn btn-lg btn-danger pull-right", data: {disable_with:"Submitting..."} %>
