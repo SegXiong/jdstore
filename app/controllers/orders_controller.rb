@@ -13,6 +13,10 @@ class OrdersController < ApplicationController
         product_list.product_price = cart_item.product.price
         product_list.quantity = cart_item.quantity
         product_list.save
+
+        product = cart_item.product
+        product.quantity = product.quantity - cart_item.quantity
+        product.save
       end
       current_cart.clean!
       OrderMailer.notify_order_placed(@order).deliver!
