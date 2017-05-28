@@ -97,6 +97,9 @@ en:
     returned: "Returned"
     avatar: "Images"
     current_pic: "Current Picture"
+    categories: "Categories"
+    new_category: "New Category"
+    category: "Category"
 
   hello: "Hi %{name},"
 
@@ -121,3 +124,6 @@ en:
       user:
         name: "Name"
         address: "Address"
+
+      category:
+        name: "Brand"

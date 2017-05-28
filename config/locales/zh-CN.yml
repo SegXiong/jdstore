@@ -76,6 +76,9 @@ zh-CN:
     returned: "已退货"
     avatar: "图片"
     current_pic: "当前图片"
+    categories: "商品类别"
+    new_category: "新增类别"
+    category: "类别"
 
   hello: "亲～ %{name} 你好："
 
@@ -100,3 +103,6 @@ zh-CN:
       user:
         name: "姓名"
         address: "地址"
+
+      category:
+        name: "类别"

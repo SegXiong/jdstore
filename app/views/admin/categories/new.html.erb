@@ -1,0 +1,10 @@
+<h2><%= t("admin.new_category") %></h2>
+
+<%= simple_form_for [:admin, @category] do |f| %>
+  <div class="group">
+    <%= f.input :name %>
+  </div>
+  <div class="group">
+    <%= f.button :submit, t("submit") %>
+  </div>
+<% end %>
