@@ -27,6 +27,32 @@ class CartItemsController < ApplicationController
 
   end
 
+  def add
+    @cart_item = current_cart.cart_items.find_by(product_id: params[:id])
+    if @cart_item.quantity < @cart_item.product.quantity
+      @cart_item.quantity += 1
+      @cart_item.save
+      redirect_to carts_path
+    elsif @cart_item.quantity == @cart_item.product.quantity
+      redirect_to :back, alert: "Out of Storage"
+
+    end
+
+  end
+
+  def minus
+    @cart_item = current_cart.cart_items.find_by(product_id: params[:id])
+    if @cart_item.quantity > 1
+      @cart_item.quantity -= 1
+      @cart_item.save
+      redirect_to carts_path
+    elsif @cart_item.quantity == 1
+      redirect_to :back, alert: "At least One"
+
+    end
+
+  end
+
   private
 
   def cart_item_params
