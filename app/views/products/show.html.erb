@@ -1,49 +1,7 @@
-<div class="row">
-  <div class="col-md-6">
-    <% if @photos.present? %>
-      <% @photos.each_with_index do |photo, index| %>
-        <% if index == 0 %>
-          <%= image_tag(photo.avatar.medium.url, class: "thumbnail") %>
-            <div style="letter-spacing: -8px;">
-        <% else %>
-          <%= image_tag(photo.avatar.thumb.url, class: "thumbnail") %>
-        <% end %>
-      <% end %>
-            </div>
-    <% else %>
-      <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
-    <% end %>
-  </div>
-  <div class="col-md-6">
-    <h2><%= @product.title %></h2>
-    <div style="height: 100px;">
-      <p>
-        <%= @product.description %>
-      </p>
-    </div>
-    <div><%= t("quantity") %> : <%= @product.quantity %></div>
-    <div class="product-price">￥ <%= @product.price %></div>
-    <div class="pull-right">
-      <% if current_user && current_user.has_collected?(@product) %>
-        <%= link_to(t("discollect"), discollect_product_path(@product), method: :post, :class => "btn btn-default") %>
-      <% else %>
-        <%= link_to(t("collect"), collect_product_path(@product), method: :post, :class => "btn btn-default") %>
-      <% end %>
-      <% if @product.quantity.present? && @product.quantity > 0 %>
-        <%= link_to add_to_cart_product_path(@product), :method => :post, :class => "btn btn-lg btn-danger" do %>
-          <%= t("add_to_cart") %>
-        <% end %>
-      <% else %>
-        <%= t("empty") %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
 <div class="product-container">
 	<div class="col-md-6 product-images">
 		<div id='carousel-custom' class='carousel slide' data-ride='carousel'>
-	        <div class='carousel-inner'>
+	    <div class='carousel-inner'>
 				<% if @photos.present? %>
 					<% @photos.each_with_index do |photo, index| %>
 						<% if index == 0 %>
@@ -56,13 +14,6 @@
 					<%= image_tag("http://placehold.it/400x510&text=No Pic", class: "item") %>
 				<% end %>
 	        </div>
-
-        <!-- <a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
-	            <span class='glyphicon glyphicon-chevron-left'></span>
-	        </a>
-	        <a class='right carousel-control' href='#carousel-custom' data-slide='next'>
-	            <span class='glyphicon glyphicon-chevron-right'></span>
-	        </a> -->
 
 	        <ol class='carousel-indicators mCustomScrollbar meartlab'>
 	        	<% if @photos.present? %>
@@ -87,4 +38,36 @@
 					<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
 				<% end %>
 	    	</ol>
-		</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h2><%= @product.title %></h2>
+      <div style="height: 100px;">
+        <p>
+          <%= @product.description %>
+        </p>
+      </div>
+      <div><%= t("storage") %> : <%= @product.quantity %></div>
+      <div class="product-price">￥ <%= @product.price %></div>
+      <div class="product-quantity">
+        <%= link_to("-", "", id: "quantity-minus", class: "quantity-minus btn btn-default btn-sm disabled") %>
+        <input type="text" name="quantity" value="1" id="quantity-input" class="quantity-input">
+        <%= link_to("+", "", id: "quantity-plus", class: "quantity-plus btn btn-sm btn-default #{@product.quantity <= 1 ? 'disabled' : ''}") %>
+      </div>
+      <div class="pull-right">
+        <% if current_user && current_user.has_collected?(@product) %>
+          <%= link_to(t("discollect"), discollect_product_path(@product), method: :post, :class => "btn btn-default") %>
+        <% else %>
+          <%= link_to(t("collect"), collect_product_path(@product), method: :post, :class => "btn btn-default") %>
+        <% end %>
+        <div class="favo-count">收藏人气 ( <%= @product.members.count %> )</div>
+        <% if @product.quantity.present? && @product.quantity > 0 %>
+          <%= link_to add_to_cart_product_path(@product), :method => :post, :class => "btn btn-lg btn-danger" do %>
+            <%= t("add_to_cart") %>
+          <% end %>
+        <% else %>
+          <%= t("empty") %>
+        <% end %>
+      </div>
+  </div>

@@ -57,6 +57,7 @@ en:
   discollect: "Discollect"
   user: "My Address"
   submit: "Submit"
+  storage: "Storage"
 
   account:
     order_list: "Order List"

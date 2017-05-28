@@ -38,9 +38,9 @@
               <%#= f.submit t("update"), data: {disable_with: "Submitting"} %>
             <%# end %>
 
-            <%= link_to("-", minus_cart_item_path(cart_item.product_id), method: :post) %>
-            <%= cart_item.quantity %> 
-            <%= link_to("+", add_cart_item_path(cart_item.product_id), method: :post) %>
+            <%= link_to("-", minus_cart_item_path(cart_item.product_id), method: :post, :class => "btn btn-sm btn-default") %>
+            <%= cart_item.quantity %>
+            <%= link_to("+", add_cart_item_path(cart_item.product_id), method: :post, :class => "btn btn-sm btn-default") %>
 
           </td>
           <td>

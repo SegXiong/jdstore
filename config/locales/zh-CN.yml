@@ -36,6 +36,7 @@ zh-CN:
   discollect: "取消收藏"
   user: "收货地址"
   submit: "提交"
+  storage: "库存"
 
   account:
     order_list: "订单列表"
