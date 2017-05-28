@@ -13,7 +13,7 @@
 				<% else %>
 					<%= image_tag("http://placehold.it/400x510&text=No Pic", class: "item") %>
 				<% end %>
-	        </div>
+	    </div>
 
 	        <ol class='carousel-indicators mCustomScrollbar meartlab'>
 	        	<% if @photos.present? %>
@@ -38,36 +38,49 @@
 					<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
 				<% end %>
 	    	</ol>
-      </div>
     </div>
-
-    <div class="col-md-6">
-      <h2><%= @product.title %></h2>
-      <div style="height: 100px;">
-        <p>
-          <%= @product.description %>
-        </p>
-      </div>
-      <div><%= t("storage") %> : <%= @product.quantity %></div>
-      <div class="product-price">￥ <%= @product.price %></div>
-      <div class="product-quantity">
-        <%= link_to("-", "", id: "quantity-minus", class: "quantity-minus btn btn-default btn-sm disabled") %>
-        <input type="text" name="quantity" value="1" id="quantity-input" class="quantity-input">
-        <%= link_to("+", "", id: "quantity-plus", class: "quantity-plus btn btn-sm btn-default #{@product.quantity <= 1 ? 'disabled' : ''}") %>
-      </div>
-      <div class="pull-right">
-        <% if current_user && current_user.has_collected?(@product) %>
-          <%= link_to(t("discollect"), discollect_product_path(@product), method: :post, :class => "btn btn-default") %>
-        <% else %>
-          <%= link_to(t("collect"), collect_product_path(@product), method: :post, :class => "btn btn-default") %>
-        <% end %>
-        <div class="favo-count">收藏人气 ( <%= @product.members.count %> )</div>
-        <% if @product.quantity.present? && @product.quantity > 0 %>
-          <%= link_to add_to_cart_product_path(@product), :method => :post, :class => "btn btn-lg btn-danger" do %>
-            <%= t("add_to_cart") %>
-          <% end %>
-        <% else %>
-          <%= t("empty") %>
-        <% end %>
-      </div>
   </div>
+
+  <div class="col-md-6">
+    <h2><%= @product.title %></h2>
+    <div style="height: 100px;">
+      <p>
+        <%= @product.description %>
+      </p>
+    </div>
+    <div><%= t("storage") %> : <%= @product.quantity %></div>
+    <div class="product-price">￥ <%= @product.price %></div>
+
+		<!-- <%#= form_tag add_to_cart_product_path(@product), :method => :post, :remote => true do %>
+    <div class="product-quantity">
+      <%#= link_to("-", "", id: "quantity-minus", class: "quantity-minus btn btn-default btn-sm disabled") %>
+      <input type="text" name="quantity" value="1" id="quantity-input" class="quantity-input">
+      <%#= link_to("+", "", id: "quantity-plus", class: "quantity-plus btn btn-sm btn-default #{@product.quantity <= 1 ? 'disabled' : ''}") %>
+    </div> -->
+
+		<%= simple_form_for @product, method: :post, remote: true, url: add_to_cart_product_path(@product) do |f| %>
+			<div class="product-quantity">
+				<%= link_to("-", "", id: "quantity-minus", class: "quantity-minus btn btn-default btn-sm disabled") %>
+				<%= f.input_field "", name: "quantity", value: 1, max: @product.quantity, id: "quantity-input", class: "quantity-input" %>
+				<%= link_to("+", "", id: "quantity-plus", class: "quantity-plus btn btn-default btn-sm #{@product.quantity <= 1 ? 'disabled' : ''}") %>
+			</div>
+
+			<% if @product.quantity.present? && @product.quantity > 0 %>
+				<button class="btn btn-lg btn-danger" type="submit">
+					<%= t("add_to_cart") %>
+				</button>
+			<% else %>
+				<%= t("empty") %>
+			<% end %>
+		<% end %>
+
+    <div class="pull-right">
+      <% if current_user && current_user.has_collected?(@product) %>
+        <%= link_to(t("discollect"), discollect_product_path(@product), method: :post, :class => "btn btn-default") %>
+      <% else %>
+        <%= link_to(t("collect"), collect_product_path(@product), method: :post, :class => "btn btn-default") %>
+      <% end %>
+      <div class="favo-count"><%= t("popularity") %> ( <%= @product.members.count %> )</div>
+    </div>
+  </div>
+</div>

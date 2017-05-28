@@ -58,6 +58,7 @@ en:
   user: "My Address"
   submit: "Submit"
   storage: "Storage"
+  popularity: "Popularity"
 
   account:
     order_list: "Order List"

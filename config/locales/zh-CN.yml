@@ -37,6 +37,7 @@ zh-CN:
   user: "收货地址"
   submit: "提交"
   storage: "库存"
+  popularity: "收藏人气"
 
   account:
     order_list: "订单列表"
