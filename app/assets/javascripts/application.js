@@ -30,6 +30,14 @@ function parseToInt(value) {
   return parseInt(value == '' ? 0 : value);
 }
 
+// 收起通知信息
+function slideUpAlert() {
+  // 消息停留2000毫秒（2秒），消失动画时间250毫秒
+  $(".alert").delay(3000).slideUp(250, function() {
+    $(this).remove();
+  });
+}
+
 $(document).on('turbolinks:load', function() {
   /*增加数量*/
   $("#quantity-plus").click(function(e) {
@@ -77,5 +85,8 @@ $(document).on('turbolinks:load', function() {
       $(this).val('1');
     }
   });
+
+  // 收起通知
+  slideUpAlert();
 
 });
