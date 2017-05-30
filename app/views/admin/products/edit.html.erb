@@ -20,15 +20,27 @@
     <%= f.select :category_id, Category.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
   </div>
   <% if @product.photos.present? %>
-    <span><%= t("admin.current_pic") %></span> <br />
+    <br /> <span><%= t("admin.current_pic") %></span> <br />
     <% @product.photos.each do |photo| %>
       <%= image_tag(photo.avatar.thumb.url) %>
     <% end %>
   <% end %>
+  <br />
   <div class="group">
     <%#= f.input :image, as: :file %>
-    <%#= f.label :avatar %>
+    <%= f.label :avatar, t("admin.avatar") %>
     <%= f.file_field :avatar, :multiple => true, name: "photos[avatar][]" %>
+  </div>
+  <% if @product.river_pics.present? %>
+    <br /> <span><%= t("admin.current_river") %></span> <br />
+    <% @product.river_pics.each do |river| %>
+      <%= image_tag(river.rvatar.thumb.url) %>
+    <% end %>
+  <% end %>
+  <br />
+  <div class="group">
+    <%= f.label :avatar, t("admin.river_pics") %>
+    <%= f.file_field :rvatar, :multiple => true, name: "river_pics[rvatar][]" %>
   </div>
   <br />
   <div class="group">

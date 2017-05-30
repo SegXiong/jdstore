@@ -102,6 +102,8 @@ en:
     categories: "Categories"
     new_category: "New Category"
     category: "Category"
+    river_pics: "Promotion Pics"
+    current_river: "Current Promotion Pics"
 
   hello: "Hi %{name},"
 

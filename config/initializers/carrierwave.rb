@@ -8,3 +8,15 @@ CarrierWave.configure do |config|
   config.qiniu_protocol = "http"
   config.qiniu_up_host = "http://up-z2.qiniu.com"
 end
+
+module CarrierWave
+  module MiniMagick
+    def quality(percentage)
+      manipulate! do |img|
+        img.quality(percentage.to_s)
+        img = yield(img) if block_given?
+        img
+      end
+    end
+  end
+end

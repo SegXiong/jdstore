@@ -11,6 +11,7 @@ class Admin::ProductsController < ApplicationController
   def new
     @product = Product.new
     @photo = @product.photos.build
+    @river_pic = @product.river_pics.build
 
   end
 
@@ -20,6 +21,12 @@ class Admin::ProductsController < ApplicationController
       if params[:photos] != nil
         params[:photos]['avatar'].each do |a|
           @photo = @product.photos.create(:avatar => a)
+        end
+
+      end
+      if params[:river_pic] !=nil
+        params[:river_pic]['rvatar'].each do |r|
+          @river_pic = @product.river_pics.create(:rvatar => r)
         end
 
       end
@@ -43,14 +50,15 @@ class Admin::ProductsController < ApplicationController
       params[:photos]['avatar'].each do |a|
         @picture = @product.photos.create(:avatar => a)
       end
-      @product.update(product_params)
-      redirect_to admin_products_path
-    elsif @product.update(product_params)
-      redirect_to admin_products_path
-    else
-      render :edit
-
     end
+    if params[:river_pics] != nil
+      @product.river_pics.destroy_all
+      params[:river_pics]['rvatar'].each do |r|
+        @rpic = @product.river_pics.create(:rvatar => r)
+      end
+    end
+    @product.update(product_params)
+    redirect_to admin_products_path
 
   end
 

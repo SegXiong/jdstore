@@ -19,10 +19,16 @@
     <%= f.label :category_id %>
     <%= f.select :category_id, Category.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
   </div>
+  <br />
   <div class="group">
     <%#= f.input :image, as: :file %>
     <%= f.label :avatar, t("admin.avatar") %>
     <%= f.file_field :avatar, :multiple => true, name: "photos[avatar][]" %>
+  </div>
+  <br />
+  <div class="group">
+    <%= f.label :rvatar, t("admin.river_pics") %>
+    <%= f.file_field :rvatar, :multiple => true, name: "river_pics[rvatar][]"%>
   </div>
   <br />
   <div class="group">

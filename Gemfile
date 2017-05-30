@@ -42,6 +42,7 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'select2-rails'
 gem 'jquery-turbolinks'
+gem 'annotate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

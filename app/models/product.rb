@@ -1,11 +1,30 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  description :text
+#  quantity    :integer
+#  price       :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  image       :string
+#  friendly_id :string
+#  category_id :integer
+#  user_id     :integer
+#
+
 class Product < ApplicationRecord
+  has_many :river_pics, :dependent => :destroy
+
   has_many :favorites
   has_many :members, :through => :favorites, :source => :user
 
   belongs_to :category, :optional => true
 
   has_many :photos, :dependent => :destroy
-  accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :photos, :river_pics
 
   mount_uploader :image, ImageUploader
 

@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find_by_friendly_id!(params[:id])
     @photos = @product.photos.all
+    @river_pics = @product.river_pics.all
 
   end
 

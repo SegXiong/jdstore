@@ -76,11 +76,13 @@ zh-CN:
     return: "退货"
     cancelled: "订单已取消"
     returned: "已退货"
-    avatar: "图片"
+    avatar: "商品图片"
     current_pic: "当前图片"
     categories: "商品类别"
     new_category: "新增类别"
     category: "类别"
+    river_pics: "详情图片"
+    current_river: "当前详情图片"
 
   hello: "亲～ %{name} 你好："
 
