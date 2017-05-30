@@ -1,0 +1,16 @@
+<h2 class="text-center"><%= t("reviews") %></h2>
+
+<div class="col-md-4 col-md-offset-4">
+  <%= simple_form_for [@product, @review] do |f| %>
+    <div class="group">
+      <%= f.input :content %>
+    </div>
+    <div class="group">
+      <%= f.label :avatar, t("review_pics") %>
+      <%= f.file_field :avatar, :multiple => true, name: "review_pics[avatar][]"%>
+    </div>
+    <div class="group">
+      <%= f.button :submit, t("submit")  %>
+    </div>
+    <% end %>
+</div>

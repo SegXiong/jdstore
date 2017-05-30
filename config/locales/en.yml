@@ -61,6 +61,8 @@ en:
   popularity: "Popularity"
   details: "Details"
   reviews: "Reviews"
+  review_pics: "Review Pics"
+  comment: "Comment"
 
   account:
     order_list: "Order List"

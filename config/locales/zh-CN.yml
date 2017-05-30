@@ -40,6 +40,8 @@ zh-CN:
   popularity: "收藏人气"
   details: "商品详情"
   reviews: "商品评价"
+  review_pics: "晒图"
+  comment: "添加评论"
 
   account:
     order_list: "订单列表"

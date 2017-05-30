@@ -97,8 +97,33 @@
 			</div>
 		</div>
 		<div class="tab-pane" role="tabpanel" id="reviews">
-			<br /> 
-		reviews
+			<br />
+			<div class="product-review col-md-8 col-md-offset-2">
+				<div class="text-center">
+					<%= link_to(t("comment"), new_product_review_path(@product), :class => "btn btn-lg btn-primary") %>
+				</div>
+				<hr />
+
+				<% @reviews.each do |review| %>
+					<div class="row">
+						<div class="pull-left col-md-9">
+							<%= simple_format(review.content) %> <br>
+							<% if review.review_pics.present? %>
+								<% review.review_pics.each_with_index do |pic, index| %>
+									<%= image_tag pic.avatar.small.url %>
+								<% end %>
+							<% end %>
+						</div>
+						<div class="pull-right col-md-3">
+							<%= review.user.email %>
+						</div>
+					</div>
+					<div class="well well-sm">
+						<%= review.created_at.to_s %>
+					</div>
+					<hr />
+				<% end %>
+			</div>
 		</div>
 	</div>
 	</div>

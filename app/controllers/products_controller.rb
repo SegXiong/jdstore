@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
     @product = Product.find_by_friendly_id!(params[:id])
     @photos = @product.photos.all
     @river_pics = @product.river_pics.all
+    @reviews = @product.reviews.all
 
   end
 

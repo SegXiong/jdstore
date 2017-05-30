@@ -16,6 +16,8 @@
 #
 
 class Product < ApplicationRecord
+  has_many :reviews
+
   has_many :river_pics, :dependent => :destroy
 
   has_many :favorites
