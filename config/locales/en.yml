@@ -59,6 +59,8 @@ en:
   submit: "Submit"
   storage: "Storage"
   popularity: "Popularity"
+  details: "Details"
+  reviews: "Reviews"
 
   account:
     order_list: "Order List"

@@ -38,6 +38,8 @@ zh-CN:
   submit: "提交"
   storage: "库存"
   popularity: "收藏人气"
+  details: "商品详情"
+  reviews: "商品评价"
 
   account:
     order_list: "订单列表"

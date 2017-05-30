@@ -77,13 +77,31 @@
     </div>
   </div>
 
-	<div class="product-details col-md-8 col-md-offset-2 text-center">
-		<% if @river_pics.present? %>
-			<% @river_pics.each do |rp| %>
-				<%= image_tag rp.rvatar.medium.url %>
-			<% end %>
-		<% else %>
-			<%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
-		<% end %>
+	<div class="col-md-12">
+	<ul class="nav nav-tabs" role="tablist" id="myTab">
+		<li class="active" role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab"><%= t("details") %></a></li>
+		<li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab"><%= t("reviews") %></a></li>
+	</ul>
+
+	<div class="tab-content" id="myTabContent">
+		<div class="tab-pane active" role="tabpanel" id="details">
+			<br />
+			<div class="product-details col-md-8 col-md-offset-2 text-center">
+				<% if @river_pics.present? %>
+					<% @river_pics.each do |rp| %>
+						<%= image_tag rp.rvatar.medium.url %>
+					<% end %>
+				<% else %>
+					<%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+				<% end %>
+			</div>
+		</div>
+		<div class="tab-pane" role="tabpanel" id="reviews">
+			<br /> 
+		reviews
+		</div>
 	</div>
+	</div>
+
+
 </div>
