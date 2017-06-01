@@ -14,6 +14,11 @@ class ProductsController < ApplicationController
     @photos = @product.photos.all
     @river_pics = @product.river_pics.all
     @reviews = @product.reviews.all
+    if @reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @reviews.average(:rate).present? ? @reviews.average(:rate).round(2) : 0
+    end
 
   end
 

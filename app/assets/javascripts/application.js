@@ -90,4 +90,27 @@ $(document).on('turbolinks:load', function() {
   // 收起通知
   slideUpAlert();
 
+  // 评论图片控制
+  $("#carousel-inner2").hide();
+  $("#carousel-indicators").click(function(){
+    $("#carousel-inner2").fadeIn();
+  })
+
+  // 评星
+  $('.star-rate').raty({
+        path: '/assets/',
+            readOnly: true,
+            score: function() {
+          return $(this).attr('data-score');
+        }
+  });
+
+      $('#star-rate').raty({
+      path: '/assets/',
+      scoreName: 'review[rate]'
+  });
+
+  // 默认评1星
+  $('#star-rate img').eq(0).trigger('click')
+
 });

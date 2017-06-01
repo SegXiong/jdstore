@@ -1,7 +1,7 @@
 <div class="product-container">
 	<div class="col-md-6 product-images">
-		<div id='carousel-custom' class='carousel slide' data-ride='carousel'>
-	    <div class='carousel-inner'>
+		<div id="carousel-custom" class="carousel slide" data-ride="carousel">
+	    <div class="carousel-inner">
 				<% if @photos.present? %>
 					<% @photos.each_with_index do |photo, index| %>
 						<% if index == 0 %>
@@ -15,29 +15,27 @@
 				<% end %>
 	    </div>
 
-	        <ol class='carousel-indicators mCustomScrollbar meartlab'>
-	        	<% if @photos.present? %>
-	        		<% @photos.each_with_index do |photo, index| %>
-	        			<% if photo.avatar.present? %>
-	        				<% if index == 0 %>
-								<li data-target="#carousel-custom" data-slide-to="<%= index %>" class="active">
-		        					<%= image_tag(photo.avatar.small.url) %>
-		        				</li>
-	        				<% else %>
-	        					<li data-target="#carousel-custom" data-slide-to="<%= index %>">
-		        					<%= image_tag(photo.avatar.small.url) %>
-		        				</li>
-	        				<% end %>
-
-	        			<% else %>
-	        				<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
-	        			<% end %>
-	        		<% end %>
-
+      <ol class="carousel-indicators mCustomScrollbar meartlab">
+        <% if @photos.present? %>
+        	<% @photos.each_with_index do |photo, index| %>
+        		<% if photo.avatar.present? %>
+        			<% if index == 0 %>
+							<li data-target="#carousel-custom" data-slide-to="<%= index %>" class="active">
+	        			<%= image_tag(photo.avatar.small.url) %>
+	        		</li>
+        			<% else %>
+        			<li data-target="#carousel-custom" data-slide-to="<%= index %>">
+	        			<%= image_tag(photo.avatar.small.url) %>
+	        		</li>
+        			<% end %>
+        		<% else %>
+        			<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
+        		<% end %>
+        	<% end %>
 				<% else %>
 					<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
 				<% end %>
-	    	</ol>
+    	</ol>
     </div>
   </div>
 
@@ -80,7 +78,7 @@
 	<div class="col-md-12">
 	<ul class="nav nav-tabs" role="tablist" id="myTab">
 		<li class="active" role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab"><%= t("details") %></a></li>
-		<li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab"><%= t("reviews") %></a></li>
+		<li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab"><%= t("reviews") %> ( <%= @product.reviews.count %> ) </a></li>
 	</ul>
 
 	<div class="tab-content" id="myTabContent">
@@ -96,10 +94,14 @@
 				<% end %>
 			</div>
 		</div>
+
 		<div class="tab-pane" role="tabpanel" id="reviews">
 			<br />
 			<div class="product-review col-md-8 col-md-offset-2">
 				<div class="text-center">
+					<%= t("starss") %>:
+        <div class="star-rate" data-score= <%= @avg_review %> ></div>
+				<br />
 					<%= link_to(t("comment"), new_product_review_path(@product), :class => "btn btn-lg btn-primary") %>
 				</div>
 				<hr />
@@ -107,26 +109,68 @@
 				<% @reviews.each do |review| %>
 					<div class="row">
 						<div class="pull-left col-md-9">
-							<%= simple_format(review.content) %> <br>
-							<% if review.review_pics.present? %>
-								<% review.review_pics.each_with_index do |pic, index| %>
-									<%= image_tag pic.avatar.small.url %>
-								<% end %>
-							<% end %>
+							<%= simple_format(review.content) %>
 						</div>
-						<div class="pull-right col-md-3">
-							<%= review.user.email %>
+
+						<div class= "col-md-3">
+							<div class="pull-right">
+								<%= review.user.email %>
+							</div>
 						</div>
 					</div>
+
+					<% if review.review_pics.present? %>
+						<div class="product-container">
+							<div class=" product-images">
+								<div id="carousel-custom2" class="carousel slide" data-ride="carousel">
+									<ol class="carousel-indicators mCustomScrollbar meartlab" id="carousel-indicators">
+										<% review.review_pics.each_with_index do |pic, index| %>
+											<% if index == 0 %>
+												<li data-target="#carousel-custom2" data-slide-to="<%= index %>" class="active">
+													<%= image_tag(pic.avatar.small.url) %>
+												</li>
+											<% else %>
+												<li data-target="#carousel-custom2" data-slide-to="<%= index %>">
+													<%= image_tag(pic.avatar.small.url) %>
+												</li>
+											<% end %>
+										<% end %>
+									</ol>
+									<br />
+									<div class="carousel-inner" role="listbox" id="carousel-inner2">
+										<% review.review_pics.each_with_index do |pic, index| %>
+											<% if index == 0 %>
+												<%= image_tag(pic.avatar.medium.url, class: "item active") %>
+											<% else %>
+												<%= image_tag(pic.avatar.medium.url, class: "item") %>
+											<% end %>
+										<% end %>
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end %>
+
+								<%# review.review_pics.each_with_index do |pic, index| %>
+									<%#= image_tag pic.avatar.small.url %>
+								<%# end %>
 					<div class="well well-sm">
-						<%= review.created_at.to_s %>
+						<div class="row">
+							<div class="col-md-4">
+								<%= review.created_at.to_s %>
+							</div>
+							<div class="col-md-8">
+								<div class="pull-right">
+									<% @reviews.each do |review| %>
+									  <div class="star-rate" data-score= <%= review.rate %> ></div>
+									<% end %>
+								</div>
+							</div>
+						</div>
 					</div>
 					<hr />
 				<% end %>
 			</div>
 		</div>
 	</div>
-	</div>
-
-
 </div>
