@@ -1,175 +1,186 @@
-<div class="product-container">
-	<div class="col-md-6 product-images">
-		<div id="carousel-custom" class="carousel slide" data-ride="carousel">
-	    <div class="carousel-inner">
-				<% if @photos.present? %>
-					<% @photos.each_with_index do |photo, index| %>
-						<% if index == 0 %>
-							<%= image_tag(photo.avatar.medium.url, class: "item active") %>
-						<% else %>
-							<%= image_tag(photo.avatar.medium.url, class: "item") %>
+<div class="container">
+	<div class="product-container">
+		<div class="col-md-6 product-images">
+			<div id="carousel-custom" class="carousel slide" data-ride="carousel">
+		    <div class="carousel-inner">
+					<% if @photos.present? %>
+						<% @photos.each_with_index do |photo, index| %>
+							<% if index == 0 %>
+								<%= image_tag(photo.avatar.medium.url, class: "item active") %>
+							<% else %>
+								<%= image_tag(photo.avatar.medium.url, class: "item") %>
+							<% end %>
 						<% end %>
+					<% else %>
+						<%= image_tag("http://placehold.it/400x510&text=No Pic", class: "item") %>
 					<% end %>
-				<% else %>
-					<%= image_tag("http://placehold.it/400x510&text=No Pic", class: "item") %>
-				<% end %>
+		    </div>
+
+	      <ol class="carousel-indicators mCustomScrollbar meartlab">
+	        <% if @photos.present? %>
+	        	<% @photos.each_with_index do |photo, index| %>
+	        		<% if photo.avatar.present? %>
+	        			<% if index == 0 %>
+								<li data-target="#carousel-custom" data-slide-to="<%= index %>" class="active">
+		        			<%= image_tag(photo.avatar.small.url) %>
+		        		</li>
+	        			<% else %>
+	        			<li data-target="#carousel-custom" data-slide-to="<%= index %>">
+		        			<%= image_tag(photo.avatar.small.url) %>
+		        		</li>
+	        			<% end %>
+	        		<% else %>
+	        			<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
+	        		<% end %>
+	        	<% end %>
+					<% else %>
+						<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
+					<% end %>
+	    	</ol>
 	    </div>
+	  </div>
 
-      <ol class="carousel-indicators mCustomScrollbar meartlab">
-        <% if @photos.present? %>
-        	<% @photos.each_with_index do |photo, index| %>
-        		<% if photo.avatar.present? %>
-        			<% if index == 0 %>
-							<li data-target="#carousel-custom" data-slide-to="<%= index %>" class="active">
-	        			<%= image_tag(photo.avatar.small.url) %>
-	        		</li>
-        			<% else %>
-        			<li data-target="#carousel-custom" data-slide-to="<%= index %>">
-	        			<%= image_tag(photo.avatar.small.url) %>
-	        		</li>
-        			<% end %>
-        		<% else %>
-        			<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
-        		<% end %>
-        	<% end %>
-				<% else %>
-					<%= image_tag("http://placehold.it/400x400&text=No Pic") %>
-				<% end %>
-    	</ol>
-    </div>
-  </div>
-
-  <div class="col-md-6">
-    <h2><%= @product.title %></h2>
-    <div style="height: 100px;">
-      <p>
-        <%= @product.description %>
-      </p>
-    </div>
-    <div><%= t("storage") %> : <%= @product.quantity %></div>
-    <div class="product-price">￥ <%= @product.price %></div>
-
-		<%= simple_form_for @product, method: :post, remote: true, url: add_to_cart_product_path(@product) do |f| %>
-			<div class="product-quantity">
-				<%= link_to("-", "", id: "quantity-minus", class: "quantity-minus btn btn-default btn-sm disabled") %>
-				<%= f.input_field "", name: "quantity", value: 1, max: @product.quantity, id: "quantity-input", class: "quantity-input" %>
-				<%= link_to("+", "", id: "quantity-plus", class: "quantity-plus btn btn-default btn-sm #{@product.quantity <= 1 ? 'disabled' : ''}") %>
+	  <div class="col-md-6 product_info">
+	    <h2><%= @product.title %></h2>
+	    <div class="product-description">
+	      <p>
+	        <%= @product.description %>
+	      </p>
+	    </div>
+			<div class="well well-lg"><%= t("price") %> <span class="show-price">￥<%= @product.price %></span></div>
+	    <div>
+				<p>
+					<%= t("storage") %> : <%= @product.quantity %>
+				</p>
 			</div>
 
-			<% if @product.quantity.present? && @product.quantity > 0 %>
-				<button class="btn btn-lg btn-danger" type="submit">
-					<%= t("add_to_cart") %>
-				</button>
-			<% else %>
-				<%= t("empty") %>
-			<% end %>
-		<% end %>
 
-    <div class="pull-right">
-      <% if current_user && current_user.has_collected?(@product) %>
-        <%= link_to(t("discollect"), discollect_product_path(@product), method: :post, :class => "btn btn-default") %>
-      <% else %>
-        <%= link_to(t("collect"), collect_product_path(@product), method: :post, :class => "btn btn-default") %>
-      <% end %>
-      <div class="favo-count"><%= t("popularity") %> ( <%= @product.members.count %> )</div>
-    </div>
-  </div>
-
-	<div class="col-md-12">
-	<ul class="nav nav-tabs" role="tablist" id="myTab">
-		<li class="active" role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab"><%= t("details") %></a></li>
-		<li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab"><%= t("reviews") %> ( <%= @product.reviews.count %> ) </a></li>
-	</ul>
-
-	<div class="tab-content" id="myTabContent">
-		<div class="tab-pane active" role="tabpanel" id="details">
-			<br />
-			<div class="product-details col-md-8 col-md-offset-2 text-center">
-				<% if @river_pics.present? %>
-					<% @river_pics.each do |rp| %>
-						<%= image_tag rp.rvatar.medium.url %>
-					<% end %>
-				<% else %>
-					<%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
-				<% end %>
-			</div>
-		</div>
-
-		<div class="tab-pane" role="tabpanel" id="reviews">
-			<br />
-			<div class="product-review col-md-8 col-md-offset-2">
-				<div class="text-center">
-					<%= t("starss") %>:
-        <div class="star-rate" data-score= <%= @avg_review %> ></div>
-				<br />
-					<%= link_to(t("comment"), new_product_review_path(@product), :class => "btn btn-lg btn-primary") %>
+			<%= simple_form_for @product, method: :post, remote: true, url: add_to_cart_product_path(@product) do |f| %>
+				<div class="product-quantity">
+					<%= link_to("-", "", id: "quantity-minus", class: "quantity-minus btn btn-default btn-sm disabled") %>
+					<%= f.input_field "", name: "quantity", value: 1, max: @product.quantity, id: "quantity-input", class: "quantity-input" %>
+					<%= link_to("+", "", id: "quantity-plus", class: "quantity-plus btn btn-default btn-sm #{@product.quantity <= 1 ? 'disabled' : ''}") %>
 				</div>
-				<hr />
 
-				<% @reviews.each do |review| %>
-					<div class="row">
-						<div class="pull-left col-md-9">
-							<%= simple_format(review.content) %>
-						</div>
+				<div class="row" style="padding: 15px;">
+					<div class="pull-left" style="padding-right: 15px;">
+			      <% if current_user && current_user.has_collected?(@product) %>
+			        <%= link_to(t("discollect"), discollect_product_path(@product), method: :post, :class => "btn btn-default") %>
+			      <% else %>
+			        <%= link_to(t("collect"), collect_product_path(@product), method: :post, :class => "btn btn-default") %>
+			      <% end %>
+			      <div class="favo-count"><%= t("popularity") %> ( <%= @product.members.count %> )</div>
+			    </div>
 
-						<div class= "col-md-3">
-							<div class="pull-right">
-								<%= review.user.email %>
+					<% if @product.quantity.present? && @product.quantity > 0 %>
+						<button class="btn btn-lg btn-danger" type="submit">
+							<%= t("add_to_cart") %>
+						</button>
+					<% else %>
+						<div class="empty"><%= t("empty") %></div>
+					<% end %>
+				</div>
+			<% end %>
+
+
+	  </div>
+
+		<div class="col-md-12">
+		<ul class="nav nav-tabs" role="tablist" id="myTab">
+			<li class="active" role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab"><%= t("details") %></a></li>
+			<li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab"><%= t("reviews") %> ( <%= @product.reviews.count %> ) </a></li>
+		</ul>
+
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane active" role="tabpanel" id="details">
+				<br />
+				<div class="product-details col-md-8 col-md-offset-2 text-center" style="margin-bottom: 30px;">
+					<% if @river_pics.present? %>
+						<% @river_pics.each do |rp| %>
+							<%= image_tag rp.rvatar.medium.url %>
+						<% end %>
+					<% else %>
+						<%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="tab-pane" role="tabpanel" id="reviews">
+				<br />
+				<div class="product-review col-md-8 col-md-offset-2">
+					<div class="text-center">
+						<h4><%= t("starss") %> :</h4>
+	        <div class="star-rate" data-score= <%= @avg_review %> ></div>
+					<br />
+						<%= link_to(t("comment"), new_product_review_path(@product), :class => "btn btn-lg btn-primary") %>
+					</div>
+					<hr />
+
+					<% @reviews.each do |review| %>
+						<div class="row">
+							<div class="pull-left col-md-9">
+								<%= simple_format(review.content) %>
+							</div>
+
+							<div class= "col-md-3">
+								<div class="pull-right">
+									<%= review.user.email %>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<% if review.review_pics.present? %>
-						<div class="product-container">
-							<div class=" product-images">
-								<div id="carousel-custom2" class="carousel slide" data-ride="carousel">
-									<ol class="carousel-indicators mCustomScrollbar meartlab" id="carousel-indicators">
-										<% review.review_pics.each_with_index do |pic, index| %>
-											<% if index == 0 %>
-												<li data-target="#carousel-custom2" data-slide-to="<%= index %>" class="active">
-													<%= image_tag(pic.avatar.small.url) %>
-												</li>
-											<% else %>
-												<li data-target="#carousel-custom2" data-slide-to="<%= index %>">
-													<%= image_tag(pic.avatar.small.url) %>
-												</li>
+						<% if review.review_pics.present? %>
+							<div class="product-container">
+								<div class=" product-images">
+									<div id="carousel-custom2" class="carousel slide" data-ride="carousel">
+										<ol class="carousel-indicators mCustomScrollbar meartlab" id="carousel-indicators">
+											<% review.review_pics.each_with_index do |pic, index| %>
+												<% if index == 0 %>
+													<li data-target="#carousel-custom2" data-slide-to="<%= index %>" class="active">
+														<%= image_tag(pic.avatar.small.url) %>
+													</li>
+												<% else %>
+													<li data-target="#carousel-custom2" data-slide-to="<%= index %>">
+														<%= image_tag(pic.avatar.small.url) %>
+													</li>
+												<% end %>
 											<% end %>
-										<% end %>
-									</ol>
-									<br />
-									<div class="carousel-inner" role="listbox" id="carousel-inner2">
-										<% review.review_pics.each_with_index do |pic, index| %>
-											<% if index == 0 %>
-												<%= image_tag(pic.avatar.medium.url, class: "item active") %>
-											<% else %>
-												<%= image_tag(pic.avatar.medium.url, class: "item") %>
+										</ol>
+										<br />
+										<div class="carousel-inner" role="listbox" id="carousel-inner2">
+											<% review.review_pics.each_with_index do |pic, index| %>
+												<% if index == 0 %>
+													<%= image_tag(pic.avatar.medium.url, class: "item active") %>
+												<% else %>
+													<%= image_tag(pic.avatar.medium.url, class: "item") %>
+												<% end %>
 											<% end %>
+										</div>
+									</div>
+								</div>
+							</div>
+						<% end %>
+
+									<%# review.review_pics.each_with_index do |pic, index| %>
+										<%#= image_tag pic.avatar.small.url %>
+									<%# end %>
+						<div class="well well-sm">
+							<div class="row">
+								<div class="col-md-4">
+									<%= review.created_at.to_s %>
+								</div>
+								<div class="col-md-8">
+									<div class="pull-right">
+										<% @reviews.each do |review| %>
+										  <div class="star-rate" data-score= <%= review.rate %> ></div>
 										<% end %>
 									</div>
 								</div>
 							</div>
 						</div>
+						<hr />
 					<% end %>
-
-								<%# review.review_pics.each_with_index do |pic, index| %>
-									<%#= image_tag pic.avatar.small.url %>
-								<%# end %>
-					<div class="well well-sm">
-						<div class="row">
-							<div class="col-md-4">
-								<%= review.created_at.to_s %>
-							</div>
-							<div class="col-md-8">
-								<div class="pull-right">
-									<% @reviews.each do |review| %>
-									  <div class="star-rate" data-score= <%= review.rate %> ></div>
-									<% end %>
-								</div>
-							</div>
-						</div>
-					</div>
-					<hr />
-				<% end %>
+				</div>
 			</div>
 		</div>
 	</div>

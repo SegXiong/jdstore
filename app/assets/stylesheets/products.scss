@@ -14,6 +14,10 @@
 //     text-align: center;
 // }
 
+.index-bg {
+  background-color: #F5F5F5!important;
+}
+
 .goods-content {
     img {
       width: 100%;
@@ -21,12 +25,32 @@
     }
   }
 
-.goods-info {
-    text-align: left;
-    line-height: 14px;
-    min-height: 55px;
-  }
+.thumbnail {
+  height: 300px;
+  padding-top: 5px;
+}
 
+.index-pic {
+  padding-top: 15px;
+}
+
+.productList-item-sellout {
+	position: absolute;
+	top: 80px;
+	left: 50%;
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	margin-left: -35px;
+	font-size: 16px;
+	background-color: rgba(0, 0, 0, .55);
+	border-radius: 50%;
+	color: #fff;
+}
+
+.sellout {
+  margin-left: 8px;
+}
 //============ show ==============
 .product-container {
     margin: 0;
@@ -43,6 +67,11 @@
     margin-right: auto;
 }
 
+.show-price {
+  color: red;
+  font-size: 28px;
+}
+
 // 数量输入框
 .product-quantity .quantity-input {
   color: #333;
@@ -53,6 +82,9 @@
   border: 1px solid #ccc;
 }
 
+.empty {
+  padding-top: 18px;
+}
 
 // ========== product carousel ===========
 

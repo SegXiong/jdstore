@@ -37,7 +37,7 @@
    width: 100%;
    /* Set the fixed height of the footer here */
    height: 100px;
-   background-color: #233140;
+   background-color: #333;
 
    p {
       color: white;
@@ -45,7 +45,55 @@
    }
   }
 
-  // 固定位置的消息通知
+//======= navbar ========
+.navbar-default {
+  background-color: #333;
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+  padding: 15px 30px;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #E3FDF5;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #E3FDF5;
+}
+
+.navbar-default .navbar-nav > .active > a
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: #E3FDF5;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+  background-color: #E3FDF5;
+  color: balck;
+}
+
+.dropdown-menu {
+  background-color: #333;
+}
+
+.dropdown-menu > li > a {
+  color: #E3FDF5;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-color: transparent;
+  color: #CFDCE2;
+}
+
+
+//======= 固定位置的消息通知 ===========
 .alert {
   position: fixed; // 这个属性防止将内容挤下去
   top: 51px; // 让消息在导航条下面，不挡住导航，根据自己导航navbar的高度调整

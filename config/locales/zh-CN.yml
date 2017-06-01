@@ -44,6 +44,7 @@ zh-CN:
   comment: "添加评论"
   stars: "评星"
   starss: "总评星"
+  sellout: "已售罄"
 
   account:
     order_list: "订单列表"
