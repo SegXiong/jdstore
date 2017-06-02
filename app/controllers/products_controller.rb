@@ -1,10 +1,26 @@
 class ProductsController < ApplicationController
+  layout 'index', :only => :index
+
   def index
     if params[:category].blank?
-      @products = Product.all
+      if params[:order] == "by_price"
+        @products = Product.all.order("price ASC")
+      elsif params[:order] == "by_popularity"
+        @products = Product.all.order("quantity ASC")
+      else
+        @products = Product.all.recent
+      end
     else
-      @category_id = Category.find_by(name: params[:category]).id
-      @products = Product.where(:category_id => @category_id)
+      if params[:order] == "by_price"
+        @category_id = Category.find_by(name: params[:category]).id
+        @products = Product.where(:category_id => @category_id).order("price ASC")
+      elsif params[:order] == "by_popularity"
+        @category_id = Category.find_by(name: params[:category]).id
+        @products = Product.where(:category_id => @category_id).order("quantity ASC")
+      else
+        @category_id = Category.find_by(name: params[:category]).id
+        @products = Product.where(:category_id => @category_id).recent
+      end
     end
 
   end

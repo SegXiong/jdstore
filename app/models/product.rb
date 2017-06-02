@@ -49,4 +49,6 @@ class Product < ApplicationRecord
     self.friendly_id ||= SecureRandom.uuid
 
   end
+
+  scope :recent, -> { order('created_at DESC') }
 end

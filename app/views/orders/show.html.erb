@@ -73,3 +73,37 @@
     <% end %>
   </div>
 </div>
+
+<div class="col-md-6">
+  <h2><%= t("shopping_list") %></h2>
+  <table class="table table-boldered cart-table">
+    <thead class="cart-head">
+      <tr>
+        <th colspan="2"><%= t("product") %></th>
+        <th><%= t("quantity") %></th>
+        <th><%= t("price") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @product_lists.each do |product_list| %>
+      <tr>
+        <td>
+          <%= product_list.product_name %></div>
+        </td>
+        <td>
+          <%= product_list.quantity %>
+        </td>
+        <td>
+          <%= product_list.product_price %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="up-hr"></div>
+  <div class="total clearfix">
+    <span class="pull-right">
+      <%= t("total") %> <%= render_cart_total_price(current_cart) %> CNY
+    </span>
+  </div>
+</div>

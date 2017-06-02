@@ -16,7 +16,7 @@
 					<% end %>
 		    </div>
 
-	      <ol class="carousel-indicators mCustomScrollbar meartlab">
+	      <ol class="carousel-indicators">
 	        <% if @photos.present? %>
 	        	<% @photos.each_with_index do |photo, index| %>
 	        		<% if photo.avatar.present? %>
@@ -49,7 +49,10 @@
 	    </div>
 			<div class="well well-lg"><%= t("price") %> <span class="show-price">￥<%= @product.price %></span></div>
 	    <div>
-				<p>
+				<p class="light-weight">
+					<%= t("freight") %> : <%= t("free") %>
+				</p>
+				<p class="light-weight">
 					<%= t("storage") %> : <%= @product.quantity %>
 				</p>
 			</div>
@@ -69,7 +72,7 @@
 			      <% else %>
 			        <%= link_to(t("collect"), collect_product_path(@product), method: :post, :class => "btn btn-default") %>
 			      <% end %>
-			      <div class="favo-count"><%= t("popularity") %> ( <%= @product.members.count %> )</div>
+			      <div class="favo-count light-weight text-center"><%= t("popularity") %> ( <%= @product.members.count %> )</div>
 			    </div>
 
 					<% if @product.quantity.present? && @product.quantity > 0 %>
@@ -133,7 +136,7 @@
 							<div class="product-container">
 								<div class=" product-images">
 									<div id="carousel-custom2" class="carousel slide" data-ride="carousel">
-										<ol class="carousel-indicators mCustomScrollbar meartlab" id="carousel-indicators">
+										<ol class="carousel-indicators" id="carousel-indicators">
 											<% review.review_pics.each_with_index do |pic, index| %>
 												<% if index == 0 %>
 													<li data-target="#carousel-custom2" data-slide-to="<%= index %>" class="active">

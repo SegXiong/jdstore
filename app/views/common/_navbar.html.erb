@@ -42,7 +42,7 @@
             <% current_cart.cart_items.each do |cart_item| %>
             <% count += cart_item.quantity %>
             <% end %>
-            （ <%= count %> ）
+            <span class="badge"><%= count %></span>
           <% end %>
         </li>
 

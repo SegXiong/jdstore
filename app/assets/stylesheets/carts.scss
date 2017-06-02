@@ -1,3 +1,106 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.up-hr {
+  border-top: 1px solid #DDDDDD;
+}
+
+.cart-table {
+  margin-bottom: 0px!important;
+}
+
+.cart-h {
+  padding-left: 15px;
+}
+
+.cart-caption a {
+  color: black;
+  vertical-align: middle;
+}
+
+.cart-caption-d a {
+  color: #777;
+}
+
+.cart-caption a:focus,
+.cart-caption a:hover,
+.cart-caption a:active {
+  text-decoration: none;
+  color: red;
+}
+
+.cart-caption-d a:focus,
+.cart-caption-d a:hover,
+.cart-caption-d a:active {
+  text-decoration: none;
+  color: red;
+}
+
+.cuscart {
+  padding-top: 35px;
+}
+
+.cuscart-1 {
+  padding-top: 30px;
+}
+
+#cusbtn .btn-default {
+  border-radius: 50%!important;
+  border: 1px solid black;
+}
+
+.cuspanel-head {
+  background-color: #333!important;
+  color: #E3FDF5!important;
+}
+
+.cart-explain {
+  color: #777;
+  font-size: 12px;
+  margin-left: -20px;
+  margin-bottom: 20px;
+}
+
+.cusform {
+  margin-right: 30%;
+}
+
+.cuslist2 {
+  background-color: #F3FBFE;
+  padding-top: 15px;
+}
+
+.cuslist1 {
+  background-color: #F7F7F7;
+  margin: 15px 15px 0!important;
+}
+
+.checkout-shipping {
+  padding-left: 15px;
+  padding-top: 25px;
+  font-size: 16px;
+}
+
+.checkout {
+  margin-bottom: 30px;
+}
+
+.ship-explain {
+  margin-top: 10px;
+  color: #777;
+  margin-left: 30px;
+  font-size: 13px;
+}
+
+.checkoutsum {
+  color: red;
+  padding-right: 50px;
+  font-size: 24px;
+}
+
+.redsum {
+  color: red;
+  font-size: 24px;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jdstore</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container-fluid index-bg" style="padding-bottom: 100px;">
+      <div class="row">
+        <%= render "common/navbar" %>
+      </div>
+      <%= render "common/flashes" %>
+      <%= yield %>
+    </div>
+    <div class="row" ></div>
+    <%= render "common/footer" %>
+  </body>
+</html>
