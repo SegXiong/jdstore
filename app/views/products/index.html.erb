@@ -1,5 +1,7 @@
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-12">
   <div class="container">
+<div class="col-md-10 col-md-offset-1">
+  <!-- <div class="container"> -->
     <div class="row ads">
       <div id="carousel-custom3" class="carousel slide" data-ride="carousel">
 		    <div class="carousel-inner">
@@ -24,10 +26,10 @@
 
     <div class="cusmenu">
       <div class="row">
-        <div class="col-md-1">
-          <%= t("order") %>
+        <div class="col-md-2">
+          <%= t("order") %>:
         </div>
-        <div class="col-md-4 pull-left">
+        <div class="col-md-6">
           <div class="col-md-2" id="menu-1"><%= link_to(t("newest"), products_path) %></div>
           <div class="col-md-2" id="menu-2"><%= link_to(t("pricing"), products_path(:order => "by_price")) %></div>
           <div class="col-md-2" id="menu-3"><%= link_to(t("popularities"), products_path(:order => "by_popularity")) %></div>
@@ -58,5 +60,7 @@
         </div>
       <% end %>
     </div>
-  </div>
+  <!-- </div> -->
+</div>
+</div>
 </div>

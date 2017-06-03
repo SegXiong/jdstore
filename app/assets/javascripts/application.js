@@ -19,6 +19,7 @@
 //= require bootstrap/carousel
 //= require bootstrap/tab
 //= require select2
+//= require bootstrap/modal
 //= require_tree .
 
 // 将用户输入的内容转为数字
@@ -34,7 +35,7 @@ function parseToInt(value) {
 // 收起通知信息
 function slideUpAlert() {
   // 消息停留2000毫秒（2秒），消失动画时间250毫秒
-  $(".alert").delay(3000).slideUp(250, function() {
+  $(".alert").delay(2000).slideUp(250, function() {
     $(this).remove();
   });
 }

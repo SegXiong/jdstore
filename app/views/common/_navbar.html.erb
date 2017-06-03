@@ -1,5 +1,6 @@
 <nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
+  <div class="col-md-12">
+    <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-hearder">
       <a href="/" class="navbar-brand">JDStore</a>
@@ -47,13 +48,11 @@
         </li>
 
         <% if !current_user %>
-          <li><%= link_to new_user_registration_path do %>
-            <%= t("sign_up") %>
-            <% end %>
+          <li>
+            <a href="#" data-toggle="modal" data-target="#signup-modal"><%= t("sign_up") %></a>
           </li>
-          <li><%= link_to new_user_session_path do %>
-            <i class="fa fa-sign-in"></i><%= t("log_in") %>
-            <% end %>
+          <li>
+            <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i><%= t("log_in") %></a>
           </li>
         <% else %>
           <li class="dropdown">
@@ -83,7 +82,168 @@
           <% end %>
       </ul>
     </div>
+    </div>
     <!-- /.navbar-collapse -->
   </div>
   <!-- /.container-fluid -->
 </nav>
+
+<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="loginmodal-container">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h2 class="text-center"><%= t("welcome") %></h2>
+      </div>
+      <div class="modal-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+                               :html => {:id => "sign_up_user"},
+                               :format => :json,
+                               :remote => true ) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-envelope"></span>
+            </span>
+            <%= f.email_field :email, autofocus: true, required: true, class: "form-control", placeholder: "Email" %>
+          </div>
+
+          <br>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-lock"></span>
+            </span>
+            <%= f.password_field :password, autocomplete: "off", required: true,minlength: 6, class: "form-control", placeholder: "Password(6 character minimum)" %>
+          </div>
+
+          <br>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-lock"></span>
+            </span>
+            <%= f.password_field :password_confirmation, autocomplete: "off", required: true, minlength: 6, class: "form-control", placeholder: "Repeat password" %>
+          </div>
+
+          <div class="form-actions">
+            <br>
+            <%= f.submit t("sign_up"), class: 'btn btn-success' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> <%= t("nope") %></button>
+        <div class="links pull-right">
+          <button class="btn btn-primary btn-small" data-toggle="modal" data-target="#login-modal" data-dismiss='modal'><%= t("log_in") %></button><br />
+          <br>
+          <div class="center-block">
+            <button class="btn btn-primary btn-small text-center" data-toggle="modal" data-target="#forgot-modal" data-dismiss='modal'><%= t("forget") %></button><br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="login-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="loginmodal-container">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h2 class="text-center"><%= t("hey") %></h2>
+      </div>
+      <div class="modal-body">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name),
+                               :html => {:id => "log_in_user"},
+                               :format => :json,
+                               :remote => true ) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-envelope"></span>
+            </span>
+            <%= f.email_field :email, autofocus: true, required: true, class: "form-control", placeholder:"Email" %>
+          </div>
+
+          <br>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-lock"></span>
+            </span>
+            <%= f.password_field :password, autocomplete: "off", required: true, class: "form-control", placeholder: "Password" %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+          <div class="checkbox col-md-12" style="padding-left:1.5em;">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+          <% end %>
+
+          <div class="form-actions">
+            <br>
+            <%= f.submit t("log_in"), class: 'btn btn-success', id: 'login_btn' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> <%= t("nope") %></button>
+        <div class="links pull-right">
+          <button class="btn btn-primary btn-small" data-toggle="modal" data-target="#signup-modal" data-dismiss='modal'><%= t("sign_up") %></button><br />
+          <br>
+          <div class="center-block">
+            <button class="btn btn-primary btn-small text-center" data-toggle="modal" data-target="#forgot-modal" data-dismiss='modal'><%= t("forget") %></button><br />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="forgot-modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="loginmodal-container">
+            <div class="modal-header">
+                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                <h2 class="text-center"><%= t("forget") %></h2>
+            </div>
+            <div class="modal-body">
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name),
+                                                :html => {:id => "forgot_password_user"},
+                                                :format => :json,
+                                                :remote => true ) do |f| %>
+                    <%= devise_error_messages! %>
+
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                      </span>
+                      <%= f.email_field :email, autofocus: true, required:true, class: "form-control", placeholder:"Email" %>
+                    </div>
+
+                  <div class="form-actions">
+                    <br>
+                    <%= f.submit t("send"), class: 'btn btn-success' %>
+                  </div>
+                <% end %>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> <%= t("nope") %></button>
+                <div class="links pull-right">
+                    <button class="btn btn-primary btn-small" data-toggle="modal" data-target="#login-modal" data-dismiss='modal'><%= t("log_in") %></button><br />
+                    <br>
+                    <div class="center-block">
+                    <button class="btn btn-primary btn-small" data-toggle="modal" data-target="#signup-modal" data-dismiss='modal'><%= t("sign_up") %></button><br />
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

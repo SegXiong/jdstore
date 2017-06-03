@@ -1,3 +1,28 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.cuspanel {
+  margin-top: 50px;
+}
+
+.order-note1 {
+  margin-bottom: 0;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.order-note2 {
+  margin-bottom: 0;
+  color: red;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.cus-pal-but {
+  margin: 10px!important;
+}
+
+.cus-pal-buts {
+  margin: 10px 10px 0!important;
+}

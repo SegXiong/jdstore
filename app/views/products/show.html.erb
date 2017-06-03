@@ -1,4 +1,5 @@
 <div class="container">
+	<div class="col-md-10 col-md-offset-1">
 	<div class="product-container">
 		<div class="col-md-6 product-images">
 			<div id="carousel-custom" class="carousel slide" data-ride="carousel">
@@ -97,7 +98,7 @@
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane active" role="tabpanel" id="details">
 				<br />
-				<div class="product-details col-md-8 col-md-offset-2 text-center" style="margin-bottom: 30px;">
+				<div class="product-details text-center" style="margin-bottom: 30px;">
 					<% if @river_pics.present? %>
 						<% @river_pics.each do |rp| %>
 							<%= image_tag rp.rvatar.medium.url %>
@@ -187,4 +188,5 @@
 			</div>
 		</div>
 	</div>
+  </div>
 </div>

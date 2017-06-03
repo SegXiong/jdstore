@@ -78,7 +78,14 @@ en:
   check: "Please check all items and fill in shipping info after checkout"
   delivery: "Shipping Method"
   shunfeng: "S.F. Express"
-  ship-time: "Delivery: Working Day & Weekend "
+  ship-time: "Delivery: Working Day & Weekend"
+  pay: "Pay Method"
+  others: "Others"
+  welcome: "Welcome to Join Us"
+  hey: "Welcome Back"
+  forget: "Forget Password?"
+  nope: "Cancel"
+  send: "Send me Reset Password Instructions"
 
   account:
     order_list: "Order List"

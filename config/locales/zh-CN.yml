@@ -58,6 +58,14 @@ zh-CN:
   delivery: "配送方式"
   shunfeng: "顺丰速运"
   ship-time: "工作日、双休日与节假日均可送货"
+  pay: "支付方式"
+  others: "其他"
+  welcome: "欢迎加入我们 XD"
+  hey: "欢迎回来"
+  forget: "忘记密码?"
+  nope: "取消"
+  send: "发送修改密码链接"
+
 
   account:
     order_list: "订单列表"
