@@ -86,6 +86,17 @@ en:
   forget: "Forget Password?"
   nope: "Cancel"
   send: "Send me Reset Password Instructions"
+  back: "Back to Index"
+  blank: "Please Fill in Key Words"
+  no-result: "No Result, Try Another One"
+  result: "Below are the Results Found"
+  order-status-placed: "Order Placed"
+  order-status-paid: "Order Paid"
+  order-status-shipping: "Shipping"
+  order-status-shipped: "Shipped"
+  order-status-cancelled: "Order Cancelled"
+  order-status-returned: "Goods Returned"
+  status: "Order Status"
 
   account:
     order_list: "Order List"

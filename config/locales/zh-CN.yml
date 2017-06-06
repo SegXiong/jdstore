@@ -65,6 +65,17 @@ zh-CN:
   forget: "忘记密码?"
   nope: "取消"
   send: "发送修改密码链接"
+  back: "返回首页"
+  blank: "搜索信息不能为空，请输入关键字搜索"
+  no-result: "没有搜索到商品哦，换个关键词试试吧"
+  result: "以下是搜索结果"
+  order-status-placed: "已下单"
+  order-status-paid: "已付款"
+  order-status-shipping: "已发货"
+  order-status-shipped: "已收货"
+  order-status-cancelled: "已取消"
+  order-status-returned: "已退货"
+  status: "订单状态"
 
 
   account:

@@ -43,6 +43,9 @@ gem 'devise-i18n'
 gem 'select2-rails'
 gem 'jquery-turbolinks'
 gem 'annotate'
+gem 'ransack'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

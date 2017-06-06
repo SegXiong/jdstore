@@ -1,13 +1,24 @@
-<h2><%= t("account.my_info") %></h2>
-
-<%= simple_form_for [:account, @user] do |f| %>
-  <div class="group">
-    <%= f.input :name %>
+<div class="product-box">
+  <div class="container">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-default col-md-8 col-md-offset-2" style="margin-top: 40px;">
+        <div class="panel-heading account-info cuspanel-head text-center">
+          <h2><%= t("account.my_info") %></h2>
+        </div>
+        <div class="panel-body">
+          <%= simple_form_for [:account, @user] do |f| %>
+            <div class="group">
+              <%= f.input :name , input_html: {class: "width-50"}%>
+            </div>
+            <div class="group">
+              <%= f.input :address %>
+            </div>
+            <div class="group">
+              <%= f.button :submit, t("submit"), :class => "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="group">
-    <%= f.input :address %>
-  </div>
-  <div class="group">
-    <%= f.button :submit, t("submit")  %>
-  </div>
-<% end %>
+</div>

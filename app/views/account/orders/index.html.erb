@@ -1,18 +1,33 @@
-<h2><%= t("order_list") %></h2>
-
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th><%= t("created_at") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @orders.each do |order| %>
-    <tr>
-      <td><%= link_to(order.id, order_path(order.token)) %></td>
-      <td><%= order.created_at.to_s %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="product-box">
+  <div class="container">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-8 col-md-offset-2">
+        <h2 class="text-center"><%= t("account.order_list") %></h2>
+        <table class="table table-hover" style=" margin-top: 20px;">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th><%= t("account.created_at") %></th>
+              <th><%= t("status") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+            <tr>
+              <td>
+                <%= link_to(order.id, order_path(order.token)) %>
+              </td>
+              <td>
+                <%= order.created_at.to_s %>
+              </td>
+              <td>
+                <%= render_order_status(order) %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
