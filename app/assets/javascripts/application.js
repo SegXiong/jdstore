@@ -41,11 +41,25 @@ function slideUpAlert() {
 }
 
 $(document).on('turbolinks:load', function() {
+  // 菜单自动打开
+  $('.dropdown').hover(function() {
+    $(this).addClass('open');
+  },
+  function() {
+    $(this).removeClass('open');
+  });
+
   /*增加数量*/
   $("#quantity-plus").click(function(e) {
+    var max = parseInt($(this).attr('max'));
     var num = parseInt($("#quantity-input").val()) + 1;
     $("#quantity-minus").removeClass("disabled");
-    $("#quantity-input").val(num);
+    if (num >= max) {
+      $("#quantity-input").val(max);
+      $(this).addClass('disabled');
+    } else {
+      $("#quantity-input").val(num);
+    }
     e.preventDefault();
   });
 

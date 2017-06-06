@@ -21,10 +21,12 @@
           <div class="col-md-3 cuscart">
             <div class="cart-caption"><%= link_to(cart_item.product.title, product_path(cart_item.product)) %></div>
           </div>
-          <div class="col-md-2 col-md-offset-1 cuscart-1" id="cusbtn">
+          <div class="col-md-3 cuscart-1" id="cusbtn">
+            <div class="pull-right">
             <%= link_to("-", minus_cart_item_path(cart_item.product_id), method: :post, :class => "btn btn-sm btn-default") %>
             <%= cart_item.quantity %>
             <%= link_to("+", add_cart_item_path(cart_item.product_id), method: :post, :class => "btn btn-sm btn-default") %>
+            </div>
           </div>
           <div class="col-md-2 cuscart">
             ￥ <%= cart_item.product.price %>

@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, :only => [:collect, :discollect]
   layout 'index', :only => :index
 
   def index

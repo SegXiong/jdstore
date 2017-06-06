@@ -14,17 +14,37 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart
 
   def current_cart
-    @current_cart ||= find_cart
+    if current_user
+      @current_cart ||= find_cart
+    else
+      @current_cart ||= find_session_cart
+
+    end
 
   end
 
   private
 
   def find_cart
-    cart = Cart.find_by(id: session[:cart_id])
+    cart = current_user.cart
     if cart.blank?
       cart = Cart.create
+      current_user.cart = cart
 
+    end
+    session_cart = find_session_cart
+    unless session_cart.blank?
+      cart.merge!(session_cart)
+      session_cart.clean!
+    end
+    return cart
+
+  end
+
+  def find_session_cart
+    cart = Cart.find_by(id: session[:cart_id])
+    if cart.blank?
+      cart = Cart.create!
     end
     session[:cart_id] = cart.id
     return cart
