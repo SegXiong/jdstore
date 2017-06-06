@@ -11,9 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
+
 //= require jquery_ujs
-//= require turbolinks
+
 //= require bootstrap/alert
 //= require bootstrap/dropdown
 //= require bootstrap/carousel
@@ -40,7 +40,7 @@ function slideUpAlert() {
   });
 }
 
-$(document).on('turbolinks:load', function() {
+$(document).on('ready', function() {
   // 菜单自动打开
   $('.dropdown').hover(function() {
     $(this).addClass('open');
