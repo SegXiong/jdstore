@@ -6,22 +6,22 @@ class ProductsController < ApplicationController
   def index
     if params[:category].blank?
       if params[:order] == "by_price"
-        @products = Product.all.order("price ASC")
+        @products = Product.published.order("price ASC")
       elsif params[:order] == "by_popularity"
-        @products = Product.all.order("quantity ASC")
+        @products = Product.published.order("quantity ASC")
       else
-        @products = Product.all.recent
+        @products = Product.published.recent
       end
     else
       if params[:order] == "by_price"
         @category_id = Category.find_by(name: params[:category]).id
-        @products = Product.where(:category_id => @category_id).order("price ASC")
+        @products = Product.published.where(:category_id => @category_id).order("price ASC")
       elsif params[:order] == "by_popularity"
         @category_id = Category.find_by(name: params[:category]).id
-        @products = Product.where(:category_id => @category_id).order("quantity ASC")
+        @products = Product.published.where(:category_id => @category_id).order("quantity ASC")
       else
         @category_id = Category.find_by(name: params[:category]).id
-        @products = Product.where(:category_id => @category_id).recent
+        @products = Product.published.where(:category_id => @category_id).recent
       end
     end
 
@@ -36,6 +36,12 @@ class ProductsController < ApplicationController
       @avg_review = 0
     else
       @avg_review = @reviews.average(:rate).present? ? @reviews.average(:rate).round(2) : 0
+    end
+
+    if @product.is_hidden
+      flash[:warning] = t("hidden")
+      redirect_to root_path
+
     end
 
   end

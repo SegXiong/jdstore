@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605103118) do
+ActiveRecord::Schema.define(version: 20170608095234) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id"
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 20170605103118) do
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -76,12 +83,13 @@ ActiveRecord::Schema.define(version: 20170605103118) do
     t.text     "description"
     t.integer  "quantity"
     t.integer  "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "image"
     t.string   "friendly_id"
     t.integer  "category_id"
     t.integer  "user_id"
+    t.boolean  "is_hidden",   default: true
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["friendly_id"], name: "index_products_on_friendly_id", unique: true
   end

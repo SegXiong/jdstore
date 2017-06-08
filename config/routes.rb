@@ -10,11 +10,21 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
-    resources :reviews
+    resources :reviews do
+      member do
+        post :like
+        post :unlike
+      end
+    end
   end
 
   namespace :admin do
-    resources :products
+    resources :products do
+      member do
+        post :publish
+        post :hide
+      end
+    end
     resources :categories
     resources :orders do
       member do

@@ -116,7 +116,9 @@
 						<h4><%= t("starss") %> :</h4>
 	        <div class="star-rate" data-score= <%= @avg_review %> ></div>
 					<br />
-						<%= link_to(t("comment"), new_product_review_path(@product), :class => "btn btn-lg btn-primary") %>
+						<% if current_user && !@product.find_review(current_user) %>
+							<%= link_to(t("comment"), new_product_review_path(@product), :class => "btn btn-lg btn-primary") %>
+						<% end %>
 					</div>
 					<hr />
 
@@ -173,7 +175,24 @@
 								<div class="col-md-4">
 									<%= review.created_at.to_s %>
 								</div>
-								<div class="col-md-8">
+								<div class="col-md-4">
+									<span class="label label-info"><%= review.likes.count %> &nbsp;
+									<% if current_user %>
+										<% if review.find_like(current_user) %>
+											<%= link_to(content_tag(:i, "", class: "fa fa-thumbs-up text-danger"), unlike_product_review_path(@product, review), method: :post ) %>
+										<% else %>
+											<%= link_to(content_tag(:i, "", class: "fa fa-thumbs-o-up text-danger"), like_product_review_path(@product, review), method: :post) %>
+										<% end %>
+									<% else %>
+										<i class="fa fa-thumbs-o-up"></i>
+									<% end %>
+
+									<div class="pull-right delete-review-label">
+										<%= link_to(t("admin.destroy"), product_review_path(@product, review), method: :delete, class: "label label-danger") %>
+									</div>
+									</span>
+								</div>
+								<div class="col-md-4">
 									<div class="pull-right">
 										<% @reviews.each do |review| %>
 										  <div class="star-rate" data-score= <%= review.rate %> ></div>

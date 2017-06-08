@@ -43,6 +43,23 @@ class Product < ApplicationRecord
 
   end
 
+  def find_review(user)
+    self.reviews.where(:user_id => user.id).first
+
+  end
+
+  def publish!
+    self.is_hidden = false
+    self.save
+
+  end
+
+  def hide!
+    self.is_hidden = true
+    self.save
+
+  end
+
   protected
 
   def generate_friendly_id
@@ -51,4 +68,5 @@ class Product < ApplicationRecord
   end
 
   scope :recent, -> { order('created_at DESC') }
+  scope :published, -> { where(is_hidden: false) }
 end

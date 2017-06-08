@@ -62,6 +62,13 @@
           <%= t("admin.edit") %>
         <% end %>
         <%= link_to(t("admin.destroy"), admin_product_path(product), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => "btn btn-sm btn-danger") %>
+
+        <% if product.is_hidden %>
+          <%= link_to(t("admin.publish"), publish_admin_product_path(product), :method => :post , :class => "btn btn-success btn-sm cus-btn") %>
+        <% else %>
+          <%= link_to(t("admin.hide"), hide_admin_product_path(product), :method => :post, :class => "btn btn-warning btn-sm cus-btn") %>
+
+        <% end %>
       </div>
     </div>
   </div>

@@ -113,6 +113,7 @@ en:
   discollected: "Discollected"
   already-discollected: "Already discollected"
   submitting: "Submitting..."
+  hidden: "This product already archived"
 
   account:
     order_list: "Order List"
@@ -161,6 +162,8 @@ en:
     manage-menu: "Manage Menu"
     edit-goods: "Edit Product"
     manage: "Manage"
+    publish: "Publish"
+    hide: "Hide"
 
 
   hello: "Hi %{name},"
@@ -176,6 +179,7 @@ en:
         image: "Image"
         created_at: "Created_at"
         category_id: "Category"
+        is_hidden: "is_hidden"
 
       order:
         billing_name: "Billing_Name"

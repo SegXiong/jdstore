@@ -1,17 +1,15 @@
 # == Schema Information
 #
-# Table name: carts
+# Table name: likes
 #
 #  id         :integer          not null, primary key
+#  user_id    :integer
+#  review_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer
 #
 
-require 'test_helper'
-
-class CartTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class Like < ApplicationRecord
+  belongs_to :user
+  belongs_to :product
 end

@@ -95,6 +95,8 @@ zh-CN:
   discollected: "已成功移出收藏"
   already-discollected: "没在收藏中"
   submitting: "提交中..."
+  hidden: "该商品已下架"
+
 
   account:
     order_list: "订单列表"
@@ -143,7 +145,9 @@ zh-CN:
     manage-menu: "管理选单"
     edit-goods: "编辑商品"
     manage: "管理"
-    
+    publish: "上架"
+    hide: "下架"
+
 
   hello: "亲～ %{name} 你好："
 
@@ -158,6 +162,7 @@ zh-CN:
         image: "图片"
         created_at: "创建时间"
         category_id: "类别"
+        is_hidden: "是否隐藏"
 
       order:
         billing_name: "姓名"

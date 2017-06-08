@@ -69,10 +69,24 @@ class Admin::ProductsController < ApplicationController
 
   end
 
+  def publish
+    @product = Product.find_by_friendly_id!(params[:id])
+    @product.publish!
+    redirect_to :back
+
+  end
+
+  def hide
+    @product = Product.find_by_friendly_id!(params[:id])
+    @product.hide!
+    redirect_to :back
+
+  end
+
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :quantity, :price, :image, :friendly_id, :category_id)
+    params.require(:product).permit(:title, :description, :quantity, :price, :image, :friendly_id, :category_id, :is_hidden)
 
   end
 end
