@@ -11,21 +11,27 @@
 
     <div class="row">
       <%= render "common/navbar" %>
+      <div class="border cusborder"></div>
+      <div class="container">
+      <div class="col-md-10 col-md-offset-1">
       <div class="col-md-2">
-        <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-          <li><%= link_to admin_products_path do %>
+        <ul class="nav nav-pills nav-stacked" style="max-width: 300px; margin-top: 100px;">
+          <li class="manage-menu"><%= t("admin.manage-menu") %></li>
+          <li class="active"><%= link_to admin_products_path do %>
             <%= t("admin.products") %>
             <% end %>
           </li>
-          <li><%= link_to admin_orders_path do %>
+          <li class="active"><%= link_to admin_orders_path do %>
             <%= t("admin.orders") %>
             <% end %>
           </li>
-          <li> <%= link_to(t("admin.categories"), admin_categories_path) %> </li>
+          <li class="active"> <%= link_to(t("admin.categories"), admin_categories_path) %> </li>
         </ul>
       </div>
       <div class="col-md-10">
         <%= yield %>
+      </div>
+      </div>
       </div>
     </div>
   </div>

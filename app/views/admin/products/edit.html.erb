@@ -1,52 +1,62 @@
-<h2>Edit Product</h2>
-<%= simple_form_for [:admin, @product] do |f| %>
-  <div class="group">
-    <%= f.input :title %>
-  </div>
-  <div class="group">
-    <%= f.input :friendly_id %>
-  </div>
-  <div class="group">
-    <%= f.input :description %>
-  </div>
-  <div class="group">
-    <%= f.input :quantity %>
-  </div>
-  <div class="group">
-    <%= f.input :price %>
-  </div>
-  <div class="group">
-    <%= f.label :category_id %>
-    <%= f.select :category_id, Category.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
-  </div>
-  <% if @product.photos.present? %>
-    <br /> <span><%= t("admin.current_pic") %></span> <br />
-    <% @product.photos.each do |photo| %>
-      <%= image_tag(photo.avatar.thumb.url) %>
-    <% end %>
-  <% end %>
-  <br />
-  <div class="group">
-    <%#= f.input :image, as: :file %>
-    <%= f.label :avatar, t("admin.avatar") %>
-    <%= f.file_field :avatar, :multiple => true, name: "photos[avatar][]" %>
-  </div>
-  <% if @product.river_pics.present? %>
-    <br /> <span><%= t("admin.current_river") %></span> <br />
-    <% @product.river_pics.each do |river| %>
-      <%= image_tag(river.rvatar.thumb.url) %>
-    <% end %>
-  <% end %>
-  <br />
-  <div class="group">
-    <%= f.label :avatar, t("admin.river_pics") %>
-    <%= f.file_field :rvatar, :multiple => true, name: "river_pics[rvatar][]" %>
-  </div>
-  <br />
-  <div class="group">
-    <%= f.button :submit, t("submit") %>
-  </div>
-<% end %>
+<div class="product-box">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-default" style="margin-top: 40px;">
+        <div class="panel-heading cuspanel-head text-center">
+          <h2><%= t("admin.edit-goods") %></h2>
+        </div>
+        <div class="panel-body">
+          <%= simple_form_for [:admin, @product] do |f| %>
+            <div class="group">
+              <%= f.input :title %>
+            </div>
+            <div class="group">
+              <%= f.input :friendly_id %>
+            </div>
+            <div class="group">
+              <%= f.input :description %>
+            </div>
+            <div class="group">
+              <%= f.input :quantity %>
+            </div>
+            <div class="group">
+              <%= f.input :price %>
+            </div>
+            <div class="group">
+              <%= f.label :category_id %>
+              <%= f.select :category_id, Category.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
+            </div>
+            <% if @product.photos.present? %>
+              <br /> <span><%= t("admin.current_pic") %></span> <br />
+              <% @product.photos.each do |photo| %>
+                <%= image_tag(photo.avatar.thumb.url) %>
+              <% end %>
+            <% end %>
+            <br />
+            <div class="group">
+              <%#= f.input :image, as: :file %>
+              <%= f.label :avatar, t("admin.avatar") %>
+              <%= f.file_field :avatar, :multiple => true, name: "photos[avatar][]" %>
+            </div>
+            <% if @product.river_pics.present? %>
+              <br /> <span><%= t("admin.current_river") %></span> <br />
+              <% @product.river_pics.each do |river| %>
+                <%= image_tag(river.rvatar.thumb.url) %>
+              <% end %>
+            <% end %>
+            <br />
+            <div class="group">
+              <%= f.label :avatar, t("admin.river_pics") %>
+              <%= f.file_field :rvatar, :multiple => true, name: "river_pics[rvatar][]" %>
+            </div>
+            <br />
+            <div class="group">
+              <%= f.button :submit, t("submit"), :class => "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>
 
 <script>
   $("#product_category_id").select2( { theme: "bootstrap"} );

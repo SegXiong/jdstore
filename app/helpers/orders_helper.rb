@@ -2,7 +2,7 @@ module OrdersHelper
   def render_order_status(order)
     case order.aasm_state
     when 'order_placed'
-      content_tag(:span, t('order-status-placed'), class: "label label-danger")
+      content_tag(:span, t('order-status-placed'), class: "label label-warning")
     when 'paid'
       content_tag(:span, t('order-status-paid'), class: "label label-info")
     when 'shipping'
@@ -12,7 +12,7 @@ module OrdersHelper
     when 'order_cancelled'
       content_tag(:span, t('order-status-cancelled'), class: "label label-default")
     when 'good_returned'
-      content_tag(:span, t('order-status-returned'), class: "label label-waring")
+      content_tag(:span, t('order-status-returned'), class: "label label-danger")
     end
   end
 

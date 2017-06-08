@@ -1,9 +1,9 @@
 module Admin::OrdersHelper
   def render_order_paid_state(order)
     if order.is_paid?
-      t("admin.paid")
+      content_tag(:span, t("admin.paid"), class: "label label-success")
     else
-      t("admin.unpaid")
+      content_tag(:span, t("admin.unpaid"), class: "label label-default")
 
     end
 

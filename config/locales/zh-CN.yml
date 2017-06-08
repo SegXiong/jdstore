@@ -76,7 +76,25 @@ zh-CN:
   order-status-cancelled: "已取消"
   order-status-returned: "已退货"
   status: "订单状态"
-
+  no-order: "您目前还没有任何订单"
+  no-fav: "您目前还没有任何收藏"
+  user-info-updated: "用户资料已更新"
+  not-admin: "您所在的用户组暂无权限"
+  item-deleted: "已移出购物车"
+  quantity-changed: "数量已变更"
+  out-range: "数量超出库存"
+  least-one: "数量不能小于1"
+  clean-out: "已清空购物车"
+  paid-ali: "使用支付宝付款成功"
+  paid-wechat: "使用微信付款成功"
+  request-applied: "已申请取消订单"
+  alredy-in-cart: "您的购物车内已有此物品"
+  add-in-cart: "已成功加入购物车"
+  collected: "已成功加入收藏"
+  already-collected: "已经在收藏中"
+  discollected: "已成功移出收藏"
+  already-discollected: "没在收藏中"
+  submitting: "提交中..."
 
   account:
     order_list: "订单列表"
@@ -106,7 +124,7 @@ zh-CN:
     quantity: "数量"
     shipping_detail: "寄送资讯"
     billing: "订购人"
-    shipping: "收件人"
+    shipping-to: "收件人"
     paid: "已付款"
     unpaid: "未付款"
     cancel: "取消订单"
@@ -122,6 +140,10 @@ zh-CN:
     category: "类别"
     river_pics: "详情图片"
     current_river: "当前详情图片"
+    manage-menu: "管理选单"
+    edit-goods: "编辑商品"
+    manage: "管理"
+    
 
   hello: "亲～ %{name} 你好："
 

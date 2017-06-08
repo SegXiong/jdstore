@@ -25,5 +25,5 @@
     <%= f.label :avatar %>
     <%= f.file_field :avatar, :miltiple => true, name: "photos[avatar][]" %>
   </div>
-  <%= f.submit "Submit", data: {disable_with: "Submitting..."} %>
+  <%= f.submit "Submit", data: {disable_with: t("submitting")} %>
 <% end %>

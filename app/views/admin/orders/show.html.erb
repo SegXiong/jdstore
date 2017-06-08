@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-md-12">
-    <h2><%= t("admin.order_detail") %> (<%= render_order_paid_state(@order) %>)</h2>
+  <div class="col-md-10 col-md-offset-1">
+    <h2><%= t("admin.order_detail") %> <%= render_order_paid_state(@order) %></h2>
     <%= render "state_option", order: @order %>
     <table class="table table-bordered">
       <thead>
@@ -47,7 +47,7 @@
         </tr>
         <tr>
           <td>
-            <%= t("admin.shipping") %>
+            <%= t("admin.shipping-to") %>
           </td>
         </tr>
         <tr>

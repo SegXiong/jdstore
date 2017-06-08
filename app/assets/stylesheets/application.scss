@@ -49,6 +49,15 @@
   }
 
 //======= navbar ========
+.cusnav {
+  margin-bottom: 0;
+}
+
+.cusborder {
+  margin:0 -15px 20px;
+
+}
+
 .navbar-default {
   background-color: #333;
   border: 0;
@@ -98,6 +107,31 @@
   color: #CFDCE2;
 }
 
+.border {
+  height: 5px;
+  border: 0;
+  background-color: #F00;
+  background-image:
+    linear-gradient(
+    to right,
+    #F00,
+    #F00 14.28%,
+    #F60 14.28%,
+    #F60 28.56%,
+    #FF0 28.56%,
+    #FF0 42.84%,
+    #0C0 42.84%,
+    #0C0 57.12%,
+    #699 57.12%,
+    #699 71.4%,
+    #06C 71.4%,
+    #06C 85.68%,
+    #909 85.68%,
+    #909 100%
+    );
+    -webkit-background-size: 50% 100%;
+    background-size: 50% 100%;
+}
 
 //======= 固定位置的消息通知 ===========
 .alert {
@@ -231,4 +265,9 @@
 
 .account-info {
   margin: 0 -15px;
+}
+
+// ======= admin/category ========
+.x-color:hover {
+  color: red;
 }

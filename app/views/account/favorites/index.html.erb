@@ -3,6 +3,7 @@
     <div class="col-md-8 col-md-offset-2">
       <h2><%= t("account.favorites") %></h2>
         <hr />
+        <% if @products.present? %>
         <% @products.each do |product| %>
         <div class="row">
           <div class="col-md-3">
@@ -10,7 +11,7 @@
               <% if product.photos[0].present? %>
                 <%= image_tag(product.photos[0].avatar.small.url) %>
               <% else %>
-                <%= image_tag("http://placehold.it/200x200&text=No Pic") %>
+                <%= image_tag("http://placehold.it/100x100&text=No Pic") %>
               <% end %>
             <% end %>
           </div>
@@ -27,6 +28,14 @@
           </div>
         </div>
         <hr />
+        <% end %>
+        <% else %>
+        <div class="text-center fav-index">
+          <h4><i class="fa fa-times-circle fa-lg" aria-hidden="true"></i> <%= t("no-fav") %></h4>
+          <div>
+            <%= link_to(t("back"), products_path, :class => "btn btn-lg btn-default") %>
+          </div>
+        </div>
         <% end %>
     </div>
   </div>

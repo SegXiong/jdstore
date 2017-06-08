@@ -1,3 +1,19 @@
 // Place all the styles related to the admin::products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.manage-menu {
+  color: #E3FDF5;
+  background-color: #333;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.cus-pro-index {
+  margin-top: 30px;
+}
+
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  background-color: #333!important;
+  color: #E3FDF5!important;
+}

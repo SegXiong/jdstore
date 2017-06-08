@@ -1,47 +1,69 @@
 <h2><%= t("admin.product_list") %></h2>
-<div class="pull-right" style="padding-bottom: 20px;">
-  <%= link_to new_admin_product_path, class: "btn btn-primary btn-sm" do %>
-    <%= t("admin.add") %>
+<div class="row">
+  <div class="pull-right" style="margin-right: 15px;">
+  <%= link_to new_admin_product_path, class: "btn btn-primary" do %>
+  <%= t("admin.add") %>
   <% end %>
+  </div>
 </div>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th width="220"><%= t("admin.product_pic") %></th>
-      <th><%= t("admin.name") %></th>
-      <th><%= t("admin.price") %></th>
-      <th width="100"><%= t("admin.option") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @products.each_with_index do |product, index| %>
-      <tr>
-        <td>
-          <%= index + 1 %>
-        </td>
-        <td>
-          <%= link_to product_path(product) do %>
-            <% if product.photos.present? %>
-              <%= image_tag(product.photos[0].avatar.thumb.url, class: "thumbnail") %>
-            <% else %>
-              <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
-            <% end %>
+<hr />
+<div class="row">
+  <div class="col-md-2 text-center">
+    #
+  </div>
+  <div class="col-md-3">
+    <div class="cart-caption" style="margin-left: 20px;">
+      <%= t("admin.product_pic") %>
+    </div>
+  </div>
+  <div class="col-md-3" id="cusbtn">
+    <div class="text-center pull-left">
+      <%= t("admin.name") %>
+    </div>
+  </div>
+  <div class="col-md-2">
+    ￥ <%= t("admin.price") %>
+  </div>
+  <div class="col-md-2">
+    <div>
+      <%= t("admin.option") %>
+    </div>
+  </div>
+</div>
+
+  <hr />
+  <% @products.each_with_index do |product, index| %>
+  <div class="row">
+    <div class="col-md-2 cuscart text-center">
+      <%= index + 1 %>
+    </div>
+    <div class="col-md-3">
+      <div class="cart-caption">
+        <%= link_to product_path(product) do %>
+          <% if product.photos.present? %>
+            <%= image_tag(product.photos[0].avatar.small.url) %>
+          <% else %>
+            <%= image_tag("http://placehold.it/100x100&text=No Pic") %>
           <% end %>
-        </td>
-        <td>
-          <%= product.title %>
-        </td>
-        <td>
-          <%= product.price %>
-        </td>
-        <td>
-          <%= link_to edit_admin_product_path(product), :class => "btn btn-sm btn-default" do %>
-            <%= t("admin.edit") %>
-          <% end %>
-          <%= link_to(t("admin.destroy"), admin_product_path(product), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => "btn btn-sm btn-danger") %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-3 cuscart" id="cusbtn">
+      <div class="text-center pull-left">
+        <%= product.title %>
+      </div>
+    </div>
+    <div class="col-md-2 cuscart">
+      ￥ <%= product.price %>
+    </div>
+    <div class="col-md-2 cus-pro-index">
+      <div>
+        <%= link_to edit_admin_product_path(product), :class => "btn btn-sm btn-default" do %>
+          <%= t("admin.edit") %>
+        <% end %>
+        <%= link_to(t("admin.destroy"), admin_product_path(product), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => "btn btn-sm btn-danger") %>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <% end %>

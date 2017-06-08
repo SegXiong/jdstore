@@ -1,22 +1,26 @@
+<div class="col-md-10 col-md-offset-1">
 <h2><%= t("order_list") %></h2>
 
-<table class="table table-bordered">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>#</th>
       <th><%= t("admin.created_at") %></th>
       <th><%= t("admin.buyer") %></th>
       <th><%= t("admin.state") %></th>
+      <th><%= t("admin.option") %></th>
     </tr>
   </thead>
   <tbody>
     <% @orders.each do |order| %>
     <tr>
-      <td><%= link_to(order.id, admin_order_path(order)) %></td>
+      <td><%= order.id %></td>
       <td><%= order.created_at.to_s %></td>
       <td><%= order.user.email %></td>
       <td><%= order.aasm_state %></td>
+      <td><%= link_to(t("admin.manage"), admin_order_path(order), :class => "label label-primary") %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+</div>

@@ -10,7 +10,7 @@ class Account::UsersController < ApplicationController
     @user = current_user
     @user.update(user_params)
     if @user.save
-      flash[:notice] = "Info Updated"
+      flash[:notice] = t("user-info-updated")
       redirect_to edit_account_user_path(current_user)
     else
       render :edit

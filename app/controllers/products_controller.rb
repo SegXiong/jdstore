@@ -44,12 +44,12 @@ class ProductsController < ApplicationController
     @product = Product.find_by_friendly_id!(params[:id])
     @quantity = params[:quantity].to_i
     if current_cart.products.include?(@product)
-      flash[:warning] = "你的购物车内已有此物品"
+      flash[:warning] = t("alredy-in-cart")
     elsif @quantity <= @product.quantity
       current_cart.add_product_to_cart(@product, @quantity)
-      flash[:notice] = "你已成功将 #{@product.title} 加入购物车"
+      flash[:notice] = t("add-in-cart")
     else
-      flash[:warning] = "选择的商品数量超过库存"
+      flash[:warning] = t("out-range")
     end
     redirect_to :back
 
@@ -59,9 +59,9 @@ class ProductsController < ApplicationController
     @product = Product.find_by_friendly_id!(params[:id])
     if !current_user.has_collected?(@product)
       current_user.collect!(@product)
-      flash[:notice] = "Item collected"
+      flash[:notice] = t("collected")
     else
-      flash[:warning] = "You've already collected"
+      flash[:warning] = t("already-collected")
 
     end
     redirect_to :back
@@ -72,9 +72,9 @@ class ProductsController < ApplicationController
     @product = Product.find_by_friendly_id!(params[:id])
     if current_user.has_collected?(@product)
       current_user.discollect!(@product)
-      flash[:notice] = "Item discollected"
+      flash[:notice] = t("discollected")
     else
-      flash[:warning] = "You haven't collected yet"
+      flash[:warning] = t("already-discollected")
 
     end
     redirect_to :back

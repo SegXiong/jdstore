@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
     @cart_item = @cart.cart_items.find_by(product_id: params[:id])
     @product = @cart_item.product
     @cart_item.destroy
-    flash[:warning] = "成功将 #{@product.title} 从购物车删除！"
+    flash[:warning] = t("item-deleted")
     redirect_to :back
 
   end
@@ -17,9 +17,9 @@ class CartItemsController < ApplicationController
 
     if @cart_item.product.quantity >= cart_item_params[:quantity].to_i
       @cart_item.update(cart_item_params)
-      flash[:notice] = "成功变更数量"
+      flash[:notice] = t("quantity-changed")
     else
-      flash[:warning] = "数量不足以加入购物车"
+      flash[:warning] = t("out-range")
 
     end
 
@@ -34,7 +34,7 @@ class CartItemsController < ApplicationController
       @cart_item.save
       redirect_to carts_path
     elsif @cart_item.quantity == @cart_item.product.quantity
-      redirect_to :back, alert: "Out of Storage"
+      redirect_to :back, alert: t("out-range")
 
     end
 
@@ -47,7 +47,7 @@ class CartItemsController < ApplicationController
       @cart_item.save
       redirect_to carts_path
     elsif @cart_item.quantity == 1
-      redirect_to :back, alert: "At least One"
+      redirect_to :back, alert: t("least-one")
 
     end
 
