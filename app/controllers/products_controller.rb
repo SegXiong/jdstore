@@ -6,22 +6,22 @@ class ProductsController < ApplicationController
   def index
     if params[:category].blank?
       if params[:order] == "by_price"
-        @products = Product.published.order("price ASC")
+        @products = Product.published.order("price ASC").paginate(:page => params[:page], :per_page => 12 )
       elsif params[:order] == "by_popularity"
-        @products = Product.published.order("quantity ASC")
+        @products = Product.published.order("quantity ASC").paginate(:page => params[:page], :per_page => 12 )
       else
-        @products = Product.published.recent
+        @products = Product.published.recent.paginate(:page => params[:page], :per_page => 12 )
       end
     else
       if params[:order] == "by_price"
         @category_id = Category.find_by(name: params[:category]).id
-        @products = Product.published.where(:category_id => @category_id).order("price ASC")
+        @products = Product.published.where(:category_id => @category_id).order("price ASC").paginate(:page => params[:page], :per_page => 12 )
       elsif params[:order] == "by_popularity"
         @category_id = Category.find_by(name: params[:category]).id
-        @products = Product.published.where(:category_id => @category_id).order("quantity ASC")
+        @products = Product.published.where(:category_id => @category_id).order("quantity ASC").paginate(:page => params[:page], :per_page => 12 )
       else
         @category_id = Category.find_by(name: params[:category]).id
-        @products = Product.published.where(:category_id => @category_id).recent
+        @products = Product.published.where(:category_id => @category_id).recent.paginate(:page => params[:page], :per_page => 12 )
       end
     end
 
@@ -37,12 +37,17 @@ class ProductsController < ApplicationController
     else
       @avg_review = @reviews.average(:rate).present? ? @reviews.average(:rate).round(2) : 0
     end
+    @reviews = @product.reviews.all.paginate(:page => params[:page], :per_page => 10 )
 
     if @product.is_hidden
       flash[:warning] = t("hidden")
       redirect_to root_path
 
     end
+
+    set_page_title @product.title
+    set_page_description @product.description
+    set_page_image @photos.first.avatar.thumb.url
 
   end
 

@@ -84,9 +84,11 @@
 						<div class="empty"><%= t("empty") %></div>
 					<% end %>
 				</div>
+				<hr />
+				<div class="share-button">
+					<%= social_share_button_tag(@product.title, :allow_sites => %w(facebook twitter google_plus weibo wechat), :image => @photos.first.avatar.medium.url, :desc => @product.description) %>
+				</div>
 			<% end %>
-
-
 	  </div>
 
 		<div class="col-md-12">
@@ -186,26 +188,32 @@
 									<% else %>
 										<i class="fa fa-thumbs-o-up"></i>
 									<% end %>
-
+									</span>
+									<% if current_user && current_user.admin? %>
 									<div class="pull-right delete-review-label">
 										<%= link_to(t("admin.destroy"), product_review_path(@product, review), method: :delete, class: "label label-danger") %>
 									</div>
-									</span>
+									<% end %>
 								</div>
 								<div class="col-md-4">
 									<div class="pull-right">
-										<% @reviews.each do |review| %>
-										  <div class="star-rate" data-score= <%= review.rate %> ></div>
-										<% end %>
+										<div class="star-rate" data-score= <%= review.rate %> ></div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<hr />
 					<% end %>
+					<div class="page-box text-center">
+						<%= will_paginate @reviews, :previous_label => t("pre"), :next_label => t("next"), renderer: BootstrapPagination::Rails %>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
   </div>
+</div>
+
+<div class="goTop">
+  <span class="fa fa-chevron-up"></span>
 </div>

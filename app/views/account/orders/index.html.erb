@@ -40,3 +40,7 @@
     </div>
   </div>
 </div>
+
+<div class="page-box text-center">
+  <%= will_paginate @orders, :previous_label => t("pre"), :next_label => t("next"), renderer: BootstrapPagination::Rails %>
+</div>

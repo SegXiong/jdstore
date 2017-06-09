@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require social-share-button
  *= require_tree .
  *= require_self
  */
@@ -19,6 +20,7 @@
  @import "font-awesome";
  @import "select2";
  @import "select2-bootstrap";
+
 
 
  html {
@@ -48,6 +50,12 @@
    }
   }
 
+// ====== will_paginate =====
+
+.page-box {
+  margin-bottom: 100px;
+}
+
 //======= navbar ========
 .cusnav {
   margin-bottom: 0;
@@ -63,6 +71,11 @@
   border: 0;
   border-radius: 0;
   radius: 0;
+
+
+  &.show_bgcolor {
+    background: rgba(51,51,51,0.8);
+  }
 }
 
 .navbar-default .navbar-brand {
@@ -108,6 +121,7 @@
 }
 
 .border {
+  margin-top: 50px;
   height: 5px;
   border: 0;
   background-color: #F00;
@@ -136,7 +150,7 @@
 //======= 固定位置的消息通知 ===========
 .alert {
   position: fixed; // 这个属性防止将内容挤下去
-  top: 51px; // 让消息在导航条下面，不挡住导航，根据自己导航navbar的高度调整
+  top: 56px; // 让消息在导航条下面，不挡住导航，根据自己导航navbar的高度调整
   left: 1%;
   width: 98%;
   z-index: 10; // 让消息显示在最上面

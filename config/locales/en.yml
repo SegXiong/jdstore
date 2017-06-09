@@ -164,6 +164,8 @@ en:
     manage: "Manage"
     publish: "Publish"
     hide: "Hide"
+    pre: "« Prev"
+    next: "Next »"
 
 
   hello: "Hi %{name},"

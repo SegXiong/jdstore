@@ -28,3 +28,7 @@
   </tbody>
 </table>
 </div>
+
+<div class="page-box text-center">
+  <%= will_paginate @categories, :previous_label => t("pre"), :next_label => t("next"), renderer: BootstrapPagination::Rails %>
+</div>

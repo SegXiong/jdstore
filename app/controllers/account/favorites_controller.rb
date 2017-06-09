@@ -3,7 +3,7 @@ class Account::FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @products = current_user.collected_products
+    @products = current_user.collected_products.paginate(:page => params[:page], :per_page => 8)
 
   end
 

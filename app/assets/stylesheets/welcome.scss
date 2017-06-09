@@ -1,3 +1,31 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.goTop {
+  height: 35px;
+  width: 35px;
+  top: 80%;
+  right: 35px;
+  position: fixed;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px #666;
+  z-index: 10;
+  display: none;
+
+  span {
+    color: #000;
+    font-size: 20px;
+    position: absolute;
+    top: 7px;
+    left: 8px;
+  }
+}
+
+.goTop:hover {
+  background-color: #333;
+
+  span {
+    color: #E3FDF5;
+  }
+}

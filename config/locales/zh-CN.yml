@@ -96,6 +96,8 @@ zh-CN:
   already-discollected: "没在收藏中"
   submitting: "提交中..."
   hidden: "该商品已下架"
+  pre: "« 上一页"
+  next: "下一页 »"
 
 
   account:

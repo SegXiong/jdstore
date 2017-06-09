@@ -20,6 +20,8 @@
 //= require bootstrap/tab
 //= require select2
 //= require bootstrap/modal
+//= require social-share-button
+//= reuqire social-share-button/wechat
 //= require_tree .
 
 // 将用户输入的内容转为数字
@@ -39,6 +41,28 @@ function slideUpAlert() {
     $(this).remove();
   });
 }
+
+// 动态navbar
+$(window).scroll(function(){
+  if ($(this).scrollTop() > 125) {
+    $('#navbar').addClass('show_bgcolor')
+  } else {
+    $('#navbar').removeClass('show_bgcolor')
+  }
+});
+
+// go Top
+$(window).scroll(function(){
+  if ($(this).scrollTop() > 2500) {
+    $('.goTop').fadeIn(100);
+  } else {
+    $('.goTop').fadeOut(200);
+  }
+
+    $('.goTop').click(function(){
+      $('html,body').animate({'scrollTop': 0}, 700);
+    })
+});
 
 $(document).on('turbolinks:load', function() {
   // 菜单自动打开

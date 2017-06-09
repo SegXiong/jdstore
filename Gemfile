@@ -44,8 +44,9 @@ gem 'select2-rails'
 gem 'jquery-turbolinks'
 gem 'annotate'
 gem 'ransack'
-gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'social-share-button'
+gem 'seo_helper'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
