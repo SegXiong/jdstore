@@ -22,6 +22,7 @@
 //= require bootstrap/modal
 //= require social-share-button
 //= reuqire social-share-button/wechat
+//= require autosize.min
 //= require_tree .
 
 // 将用户输入的内容转为数字

@@ -1,3 +1,4 @@
+<div class="col-md-12">
 <div class="container">
 	<div class="col-md-10 col-md-offset-1">
 	<div class="product-container">
@@ -116,8 +117,12 @@
 				<div class="product-review col-md-8 col-md-offset-2">
 					<div class="text-center">
 						<h4><%= t("starss") %> :</h4>
-	        <div class="star-rate" data-score= <%= @avg_review %> ></div>
-					<br />
+						<% if @avg_review == 0 %>
+							<div class="review_notes">暂无评星</div>
+						<% else %>
+	        		<div class="star-rate" data-score= <%= @avg_review %> ></div>
+						<% end %>
+						<br />
 						<% if current_user && !@product.find_review(current_user) %>
 							<%= link_to(t("comment"), new_product_review_path(@product), :class => "btn btn-lg btn-primary") %>
 						<% end %>
@@ -212,6 +217,8 @@
 		</div>
 	</div>
   </div>
+</div>
+</div>
 </div>
 
 <div class="goTop">

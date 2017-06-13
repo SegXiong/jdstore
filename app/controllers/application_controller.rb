@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :store_current_location, :unless => :devise_controller?
   protect_from_forgery with: :exception
 
   before_action :set_locale
@@ -57,6 +58,11 @@ class ApplicationController < ActionController::Base
 
     end
     I18n.locale = session[:locale] || I18n.default_locale
+
+  end
+
+  def store_current_location
+    store_location_for(:user, request.url)
 
   end
 end

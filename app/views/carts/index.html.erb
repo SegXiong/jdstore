@@ -55,6 +55,7 @@
               <%= t("freight") %>: <span> &nbsp; </span> ¥ <%= 0 %> <br /><br />
               <%= t("total") %>: <span> &nbsp; </span> <span class="redsum">¥ <%= render_cart_total_price(current_cart) + 0 %></span>
             </div>
+            <% if current_cart.cart_items.present? %>
             <ul><li class="cart-explain"><%= t("check") %></li></ul>
             <div class="col-md-6 cusbut">
               <%= link_to(t("checkout"), checkout_carts_path, method: :post, class: "btn btn-danger") %>
@@ -64,6 +65,7 @@
                 <%= t("empty_cart") %>
               <% end %>
             </div>
+            <% end %>
           </div>
         </div>
 
