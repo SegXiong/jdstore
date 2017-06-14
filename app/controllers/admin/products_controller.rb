@@ -26,7 +26,6 @@ class Admin::ProductsController < ApplicationController
       end
       if params[:river_pics] != nil
         params[:river_pics]['rvatar'].each do |r|
-          byebug
           @river_pic = @product.river_pics.create(:rvatar => r)
         end
 
