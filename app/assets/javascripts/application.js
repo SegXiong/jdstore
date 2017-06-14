@@ -21,7 +21,7 @@
 //= require select2
 //= require bootstrap/modal
 //= require social-share-button
-//= reuqire social-share-button/wechat
+//= require social-share-button/wechat
 //= require autosize.min
 //= require_tree .
 
@@ -44,7 +44,7 @@ function slideUpAlert() {
 }
 
 // 动态navbar
-$(window).scroll(function(){
+$(window).scroll(function() {
   if ($(this).scrollTop() > 125) {
     $('#navbar').addClass('show_bgcolor')
   } else {
@@ -53,26 +53,28 @@ $(window).scroll(function(){
 });
 
 // go Top
-$(window).scroll(function(){
-  if ($(this).scrollTop() > 2500) {
+$(window).scroll(function() {
+  if ($(this).scrollTop() > 1000) {
     $('.goTop').fadeIn(100);
   } else {
     $('.goTop').fadeOut(200);
   }
 
-    $('.goTop').click(function(){
-      $('html,body').animate({'scrollTop': 0}, 700);
-    })
+  $('.goTop').click(function() {
+    $('html,body').animate({
+      'scrollTop': 0
+    }, 700);
+  })
 });
 
 $(document).on('turbolinks:load', function() {
   // 菜单自动打开
   $('.dropdown').hover(function() {
-    $(this).addClass('open');
-  },
-  function() {
-    $(this).removeClass('open');
-  });
+      $(this).addClass('open');
+    },
+    function() {
+      $(this).removeClass('open');
+    });
 
   /*增加数量*/
   $("#quantity-plus").click(function(e) {
@@ -132,22 +134,22 @@ $(document).on('turbolinks:load', function() {
 
   // 评论图片控制
   $("#carousel-inner2").hide();
-  $("#carousel-indicators").click(function(){
+  $("#carousel-indicators").click(function() {
     $("#carousel-inner2").fadeIn();
   })
 
   // 评星
   $('.star-rate').raty({
-        path: '/assets/',
-            readOnly: true,
-            score: function() {
-          return $(this).attr('data-score');
-        }
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
   });
 
-      $('#star-rate').raty({
-      path: '/assets/',
-      scoreName: 'review[rate]'
+  $('#star-rate').raty({
+    path: '/assets/',
+    scoreName: 'review[rate]'
   });
 
   // 默认评1星

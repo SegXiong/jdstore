@@ -29,3 +29,170 @@
     color: #E3FDF5;
   }
 }
+
+//======= jumbotron ========
+
+.btn {
+    background-color: #fff;
+    margin: 0 10px 0 10px;
+  }
+
+  /* 按钮-鼠标效果 */
+  .btn:hover,
+  .btn:focus {
+    color: #0070DE;
+  }
+
+.btn-push {
+  background-color: transparent;
+  color: #fff;
+  background-color: rgba(51, 51, 51, 0.8); //半透明背景
+  padding: 10px 20px;
+  font-size: 20px;
+
+  /* 显示特效 */
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+/* 按钮-鼠标滑动效果 */
+.btn-push:hover {
+  background-color: #0070DE;
+  border-color: #0070DE;
+  color: #E3FDF5!important;
+}
+
+.up20 {
+  margin-top: -20px;
+}
+
+.jumbo1 {
+  background: image_url("jumbo.jpg") no-repeat scroll top center/ cover;
+  height: 700px;
+  border-radius: 0!important;
+}
+
+.push-block {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 0 auto;
+  margin-top: 175px;
+  padding: 30px;
+  width: 550px;
+}
+
+// ====== service ======
+.short-line {
+    background: #0070DE;
+    margin: 15px auto 30px auto;
+    width: 150px;
+    height: 1.5px;
+  }
+
+  .down80 {
+    margin-top: 80px;
+  }
+
+  .service-box {
+    margin-bottom: 50px;
+  }
+
+  .img-box {
+    height: 200px;
+    width: 300px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .img-box img {
+    transition: all 0.4s; /*这句代码的意思是，当这个元素的某个属性发现变化时，不是立刻完成，而是慢慢地在400ms内完成，这样就实现了动画的效果*/
+    -webkit-transition: all 0.4s;
+    -webkit-transition:all 0.4s ease-in-out; /*让「谷歌浏览器」支持这个属性*/
+    -moz-transition:all 0.4s ease-in-out; /*让「火狐浏览器」支持这个属性*/
+    -o-transition:all 0.4s ease-in-out; /*让「safari」支持属性*/
+    -ms-transition:all 0.4s ease-in-out; /*让「IE浏览器」支持这个属性*/
+  }
+
+  .img-box:hover img {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+  }
+
+  .service-block {
+
+  }
+
+// ====== feedback ======
+.feedback-box {
+  /* 区块 */
+  background-color: #FAFAFA;
+  text-align: center;
+  padding: 50px 0 125px 0;
+
+  /* 标题 */
+  strong {
+    margin-top: 25px;
+    color: #4A6BB5;
+  }
+
+  /* 图片 */
+  img {
+    width: 80px;
+    margin: 0 auto 25px auto;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+  }
+
+  /* 文字 */
+  p {
+    color: #666;
+    max-width: 550px;
+    margin: 0 auto 25px auto;
+  }
+
+  /* 按钮设置 */
+  .carousel-indicators {
+    bottom: -70px; //按钮位置
+
+    /* 按钮 */
+    li {
+      background-color: #ddd;
+      height: 12.5px;
+      width: 12.5px;
+      margin: 0 5px;
+      border-radius: 0;
+
+      /* 按钮转向45度 */
+      -moz-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    /* 按钮-启动效果 */
+    li.active {
+      background-color: #4A6BB5;
+    }
+  }
+}
+
+// ====== jumbo2 ======
+  .btn-center {
+    margin-top: 10px;
+  }
+
+  .jumbo-box2 {
+    margin-bottom: -130px;
+  }
+
+  .jumbo2 {
+    background: image_url("jumbo2.jpg") no-repeat scroll top center/ cover;
+    height: 200px;
+    border-radius: 0!important;
+  }
