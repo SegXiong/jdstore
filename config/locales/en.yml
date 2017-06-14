@@ -114,6 +114,10 @@ en:
   already-discollected: "Already discollected"
   submitting: "Submitting..."
   hidden: "This product already archived"
+  pre: "« Prev"
+  next: "Next »"
+  no-result-product: "No Product Under This Category"
+
 
   account:
     order_list: "Order List"
@@ -164,8 +168,6 @@ en:
     manage: "Manage"
     publish: "Publish"
     hide: "Hide"
-    pre: "« Prev"
-    next: "Next »"
 
 
   hello: "Hi %{name},"

@@ -1,6 +1,15 @@
 <div class="col-md-12">
   <div class="container">
 <div class="col-md-10 col-md-offset-1">
+  <% if @products.blank? %>
+    <div class="text-center search-info-error">
+      <h4><i class="fa fa-times-circle fa-lg" aria-hidden="true"></i> <%= t("no-result-product") %></h4>
+      <div>
+        <%= link_to(t("back"), products_path, :class => "btn btn-lg btn-default") %>
+      </div>
+    </div>
+
+  <% else %>
   <!-- <div class="container"> -->
     <div class="row ads">
       <div id="carousel-custom3" class="carousel slide" data-ride="carousel">
@@ -60,6 +69,7 @@
         </div>
       <% end %>
     </div>
+  <% end %>
   <!-- </div> -->
 </div>
 </div>

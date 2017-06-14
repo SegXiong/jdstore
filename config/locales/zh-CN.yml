@@ -98,6 +98,7 @@ zh-CN:
   hidden: "该商品已下架"
   pre: "« 上一页"
   next: "下一页 »"
+  no-result-product: "此类别下暂无商品"
 
 
   account:
