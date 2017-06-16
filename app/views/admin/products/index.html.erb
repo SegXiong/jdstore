@@ -58,15 +58,15 @@
     </div>
     <div class="col-md-2 cus-pro-index">
       <div>
-        <%= link_to edit_admin_product_path(product), :class => "btn btn-sm btn-default" do %>
+        <%= link_to edit_admin_product_path(product), :class => "btn btn-sm btn-default btntop2" do %>
           <%= t("admin.edit") %>
         <% end %>
-        <%= link_to(t("admin.destroy"), admin_product_path(product), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => "btn btn-sm btn-danger") %>
+        <%= link_to(t("admin.destroy"), admin_product_path(product), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => "btn btn-sm btn-danger btntop2") %>
 
         <% if product.is_hidden %>
-          <%= link_to(t("admin.publish"), publish_admin_product_path(product), :method => :post , :class => "btn btn-success btn-sm cus-btn") %>
+          <%= link_to(t("admin.publish"), publish_admin_product_path(product), :method => :post , :class => "btn btn-success btn-sm cus-btn btntop2") %>
         <% else %>
-          <%= link_to(t("admin.hide"), hide_admin_product_path(product), :method => :post, :class => "btn btn-warning btn-sm cus-btn") %>
+          <%= link_to(t("admin.hide"), hide_admin_product_path(product), :method => :post, :class => "btn btn-warning btn-sm cus-btn btntop2") %>
 
         <% end %>
       </div>

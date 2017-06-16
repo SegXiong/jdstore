@@ -166,6 +166,7 @@ zh-CN:
         created_at: "创建时间"
         category_id: "类别"
         is_hidden: "是否隐藏"
+        category: "类别"
 
       order:
         billing_name: "姓名"
@@ -178,4 +179,4 @@ zh-CN:
         address: "地址"
 
       category:
-        name: "类别"
+        name: "类别"    

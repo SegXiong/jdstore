@@ -23,8 +23,9 @@
               <%= f.input :price %>
             </div>
             <div class="group">
-              <%= f.label :category_id %>
-              <%= f.select :category_id, Category.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
+              <%#= f.label :category_id %>
+              <%#= f.select :category_id, Category.all.map{ |c| [c.name, c.id] }, {}, :class => "form-control" %>
+              <%= f.association :category %>
             </div>
             <br />
             <div class="group">
