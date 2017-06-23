@@ -38,10 +38,16 @@
         <div class="col-md-2" style="color: #ccc;">
           <%= t("order") %>:
         </div>
-        <div class="col-md-6">
-          <div class="col-md-2" id="menu-1"><%= link_to(t("newest"), products_path) %></div>
-          <div class="col-md-2" id="menu-2"><%= link_to(t("pricing"), products_path(:order => "by_price")) %></div>
-          <div class="col-md-2" id="menu-3"><%= link_to(t("popularities"), products_path(:order => "by_popularity")) %></div>
+        <div class="col-md-6 text-center bottom20">
+          <div class="col-md-2" id="menu-1"><%= link_to(t("newest"), products_path, class: "href-1") %></div>
+          <div class="col-md-2" id="menu-2"><%= link_to(t("pricing"), products_path(:order => "by_price"), class: "href-2") %></div>
+          <div class="col-md-2" id="menu-3"><%= link_to(t("popularities"), products_path(:order => "by_popularity"), class: "href-3") %></div>
+          <!-- <ul class="nav nav-tabs cusmenu2">
+            <li class="custabhead"><%#= t("order") %></li>
+            <li class="custab" id="menu_1"><%#= link_to(t("newest"), products_path, class: "href-1") %></li>
+            <li class="custab" id="menu_2"><%#= link_to(t("pricing"), products_path(:order => "by_price"), class: "href-2") %></li>
+            <li class="custab" id="menu_3"><%#= link_to(t("popularities"), products_path(:order => "by_popularity"), class: "href-3") %></li>
+          </ul> -->
         </div>
 
       </div>

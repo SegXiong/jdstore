@@ -155,4 +155,19 @@ $(document).on('turbolinks:load', function() {
   // 默认评1星
   $('#star-rate img').eq(0).trigger('click')
 
+  // $(".href-1").click(function(){
+  //   $("#menu-2").removeClass('redbottom');
+  //   $("#menu-3").removeClass('redbottom');
+  //   $("#menu-1").addClass('redbottom');
+  // })
+  // $(".href-2").click(function(){
+  //   $("#menu-1").removeClass('redbottom');
+  //   $("#menu-3").removeClass('redbottom');
+  //   $("#menu-2").addClass('redbottom');
+  // })
+  // $(".href-3").click(function(){
+  //   $("#menu-2").removeClass('redbottom');
+  //   $("#menu-1").removeClass('redbottom');
+  //   $("#menu-3").addClass('redbottom');
+  // })
 });

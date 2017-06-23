@@ -184,6 +184,9 @@ en:
         created_at: "Created_at"
         category_id: "Category"
         is_hidden: "is_hidden"
+        category: "Category"
+        avatar: "Images"
+        rvatar: "Promotion Pics"
 
       order:
         billing_name: "Billing_Name"

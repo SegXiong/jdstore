@@ -35,8 +35,9 @@
             <br />
             <div class="group">
               <%#= f.input :image, as: :file %>
-              <%= f.label :avatar, t("admin.avatar") %>
-              <%= f.file_field :avatar, :multiple => true, name: "photos[avatar][]" %>
+              <%#= f.label :avatar, t("admin.avatar") %>
+              <%#= f.file_field :avatar, :multiple => true, name: "photos[avatar][]" %>
+              <%= f.input :avatar, as: :file, :input_html => { :multiple => true, name: "photos[avatar][]"} %>
             </div>
             <% if @product.river_pics.present? %>
               <br /> <span><%= t("admin.current_river") %></span> <br />
@@ -46,8 +47,9 @@
             <% end %>
             <br />
             <div class="group">
-              <%= f.label :avatar, t("admin.river_pics") %>
-              <%= f.file_field :rvatar, :multiple => true, name: "river_pics[rvatar][]" %>
+              <%#= f.label :avatar, t("admin.river_pics") %>
+              <%#= f.file_field :rvatar, :multiple => true, name: "river_pics[rvatar][]" %>
+              <%= f.input :rvatar, as: :file, :input_html => { :multiple => true, name: "river_pics[rvatar][]"} %>
             </div>
             <br />
             <div class="group">
