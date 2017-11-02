@@ -58,7 +58,7 @@
             <% if current_cart.cart_items.present? %>
             <ul><li class="cart-explain"><%= t("check") %></li></ul>
             <div class="col-md-6 cusbut">
-              <%= link_to(t("checkout"), checkout_carts_path, method: :post, class: "btn btn-danger") %>
+              <%= link_to(t("checkout"), checkout_carts_path, class: "btn btn-danger") %>
             </div>
             <div class="col-md-6">
               <%= link_to clean_carts_path, method: :delete, class: "btn btn-warning", data: {confirm: "你确定要清空整个购物车吗？"} do %>
